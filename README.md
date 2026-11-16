@@ -5,7 +5,8 @@
   <img src="apps/web/public/assets/rom/poses/scanning.png" alt="R.O.M. scanning" width="160" />
   <img src="apps/web/public/assets/rom/poses/success.png" alt="R.O.M. mission success" width="160" />
 </p>
-> Interactive storytelling for the **NASA Space Apps Challenge 2026**: *Abandoned but not Forgotten: Storytelling about NASA's Discarded Equipment on the Moon and Mars*.
+
+>Interactive storytelling for the **NASA Space Apps Challenge 2026**: *Abandoned but not Forgotten: Storytelling about NASA's Discarded Equipment on the Moon and Mars*.
 
 ---
 
