@@ -144,8 +144,12 @@ Run the application locally and visit:
 ### 7.1. Team Members and Roles
 
 | Member | Role | Description |
-| ------ | ---- | ----------- |
-|        |      |             |
+|---|---|---|
+| Romario Caleb Rodríguez Cusquisiban | Project Manager | Organizes the team, coordinates tasks, and monitors project progress. |
+| Junior Alexis Villalobos Guerra | UI/UX Designer | Designs the website's interface, visual elements, and user experience. |
+| Marco Humberto Huamán Reyes | Web Developer | Develops the website structure, navigation, bilingual content, and responsive design. |
+| José Antonio Ramirez Quiliche | Web Developer | Implements interactive RPG mechanics, mission features, and codex functionality. |
+| Jhennifer Mitzy Mendoza Bazan | Researcher | Collects and verifies NASA information about missions, equipment, and scientific discoveries. |
 
 ---
 
