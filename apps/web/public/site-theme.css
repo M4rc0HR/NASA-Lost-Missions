@@ -1,0 +1,100 @@
+:root{
+  --archive-bg:#070b12;
+  --archive-panel:#0d1725;
+  --archive-panel-2:#111f30;
+  --archive-line:#304b62;
+  --archive-cyan:#58d9ff;
+  --archive-orange:#ff9a3c;
+  --archive-muted:#8ea2b8;
+}
+
+html,body{background:var(--archive-bg)!important;color:#f4f8ff}
+body{font-family:"Courier New",monospace}
+/* Keep images within their container; component-sized artwork can override this. */
+img{max-width:100%;height:auto}
+
+/* Codex cards are inserted by JavaScript, outside Astro's scoped selectors. */
+#cx .edu-card{
+  box-sizing:border-box;
+  display:grid;
+  grid-template-rows:clamp(120px,14vw,190px) auto;
+  gap:9px;
+  width:100%;min-width:0;max-width:100%;
+  overflow:hidden;
+  border:1px solid rgba(88,217,255,.35);
+  background:#111a2b;
+  padding:8px;
+}
+#cx .edu-card>img{
+  display:block;
+  width:100%;height:100%;
+  min-width:0;min-height:0;max-width:100%;max-height:100%;
+  object-fit:contain;
+  background:#05080d;
+}
+#cx .edu-card>div{min-width:0;overflow-wrap:anywhere}
+#cx .edu-card p{margin:4px 0}
+#cx .edu-card small{display:block;color:#ffcf91;margin-bottom:4px}
+@media(max-width:560px){
+  #cx .edu-card{width:min(100%,420px);justify-self:center;grid-template-rows:clamp(130px,42vw,180px) auto}
+}
+h1,h2,h3{font-family:Arial,sans-serif}
+button,a,.button,.btn{border-radius:0!important}
+
+.button,.btn{border:2px solid var(--archive-cyan)!important;background:var(--archive-panel)!important;color:#fff!important;box-shadow:3px 3px 0 #03060a;transition:background .15s ease,border-color .15s ease,transform .15s ease}
+.button:hover,.btn:hover{background:#17344b!important;border-color:#9cecff!important;transform:translate(-1px,-1px)}
+.button.primary,.button.orange,.deploy-button,.cinematic-start,.win-map,.win-codex,.game-over-restart{border-color:var(--archive-orange)!important;background:var(--archive-orange)!important;color:#170f0a!important}
+
+.game-card,.storm-card,.question-card,.game-over-card,.photo-card,.completion-card,.briefing-card,#cx,.mission-dossier{border-radius:0!important;background:var(--archive-panel)!important;box-shadow:5px 5px 0 #03060a!important}
+.eyebrow,.card-kicker{color:var(--archive-cyan)!important;letter-spacing:.14em}
+
+.topbar,#hud{border-bottom-color:var(--archive-line)!important}
+.site-nav{height:42px;display:flex;align-items:center;justify-content:space-between;gap:18px;min-width:0;border-bottom:1px solid var(--archive-line);color:var(--archive-muted);font-size:11px}
+.site-nav .brand-lockup{display:flex;align-items:center;gap:9px;min-width:0;white-space:nowrap}
+.site-nav .brand{color:#fff;text-decoration:none;font-weight:900;white-space:nowrap}
+.site-nav .brand-home{position:relative;display:flex;align-items:center;gap:8px;padding:3px 14px 4px 7px;border:0;border-left:2px solid var(--archive-orange);background:linear-gradient(90deg,rgba(15,36,52,.9),rgba(15,36,52,0));box-shadow:none;transition:color .15s ease,background .15s ease,transform .15s ease}
+.site-nav .brand-home:after{content:"";position:absolute;left:7px;right:0;bottom:0;height:1px;background:linear-gradient(90deg,var(--archive-cyan),transparent)}
+.site-nav .brand-home:hover{background:linear-gradient(90deg,rgba(43,39,38,.95),rgba(43,39,38,0));transform:translateX(2px)}
+.site-nav .home-mark{display:grid;place-items:center;width:22px;height:22px;border:1px solid var(--archive-cyan);color:var(--archive-cyan);font-size:13px;line-height:1;box-shadow:0 0 9px rgba(88,217,255,.22)}
+.site-nav .brand-home:hover .home-mark{border-color:var(--archive-orange);color:var(--archive-orange)}
+.site-nav .home-copy{display:flex;flex-direction:column;gap:2px}
+.site-nav .home-copy b{color:#fff;font-size:10px;letter-spacing:.06em}
+.site-nav .home-copy small{color:var(--archive-orange);font-size:7px;letter-spacing:.12em}
+.site-nav .archive-label{color:var(--archive-cyan);font-size:9px;letter-spacing:.12em;white-space:nowrap}
+.site-nav .stats{display:flex;gap:18px;color:var(--archive-muted);white-space:nowrap}
+.site-nav .nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;min-width:0}
+.site-nav .unit-label{color:var(--archive-orange);font-size:10px;white-space:nowrap}
+#hud.site-nav{height:42px;padding:0 4px 0;font-size:11px}
+@media(max-width:900px){.site-nav{gap:10px}.site-nav .archive-label{display:none}.site-nav .unit-label{font-size:9px}.site-nav .nav-actions{gap:5px}}
+@media(max-width:560px){.site-nav .unit-label{display:none}.site-nav .stats{gap:8px}.site-nav .nav-actions{gap:4px}.site-nav .btn{padding:6px 8px;font-size:10px}.site-nav .brand-home{padding:3px 8px 4px 5px}.site-nav .home-mark{width:19px;height:19px;font-size:11px}.site-nav .home-copy b{font-size:9px}.site-nav .home-copy small{font-size:6px}}
+.mission-layout{border-color:#49657b!important;background:var(--archive-panel)!important;box-shadow:5px 5px 0 #03060a!important}
+.mission-dossier{background:var(--archive-panel)!important}
+.deploy-button{box-shadow:4px 4px 0 #03060a!important}
+.game-card{border-color:rgba(88,217,255,.6)!important}
+.storm-card,.question-card{border-color:var(--archive-orange)!important}
+
+.lang-btn { color: #ffcf91; border-color: #ff9a3c; }
+.historical-ending { max-width: 520px; margin: 12px auto 0; color: #c9d7e5; font: 13px/1.5 Arial, sans-serif; }
+.hardware-codex { margin: 24px 0; padding: 16px; border: 1px solid rgba(88, 217, 255, .3); background: #0b1422; }
+.hardware-codex h2 { margin: 0 0 14px; color: #58d9ff; font: 700 20px Arial, sans-serif; }
+.hardware-codex article { border-top: 1px solid rgba(88, 217, 255, .18); padding: 14px 0; }
+.hardware-codex h3 { margin: 0 0 8px; color: #ffcf91; font: 700 17px Arial, sans-serif; }
+.hardware-codex p { margin: 5px 0; color: #c3d1df; font: 12px/1.45 Arial, sans-serif; }
+.hardware-codex p b { color: #58d9ff; }
+.map-language{margin-left:4px;border:1px solid #58d9ff;background:#0d1725;color:#fff;padding:5px 8px;cursor:pointer;font:10px "Courier New",monospace}.map-language:hover{border-color:#ff9a3c;color:#ffcf91}
+#box{left:auto!important;right:16px!important;top:295px!important;bottom:auto!important;width:min(360px,calc(100% - 32px))!important;max-height:calc(100% - 315px)!important;overflow:auto!important;border:1px solid #58d9ff!important;border-left:3px solid #ff9a3c!important;border-radius:0!important;background:rgba(5,14,24,.97)!important;color:#e8f8ff!important;padding:12px!important;box-shadow:6px 6px 0 #03060a!important;font-family:"Courier New",monospace!important}
+#box .rom-event-head{display:grid;grid-template-columns:30px 1fr auto;gap:8px;align-items:center;border-bottom:1px solid #244a61;padding-bottom:9px}.rom-event-icon{display:grid;place-items:center;width:28px;height:28px;border:2px solid #66e6a5;color:#66e6a5;font-size:16px;box-shadow:0 0 12px #66e6a544}.rom-event-channel{display:block;color:#58d9ff;font-size:8px;letter-spacing:.1em}.rom-event-head b{display:block;margin-top:3px;color:#f4fbff;font:700 13px Arial,sans-serif}.rom-event-status{color:#ffcf91;font-size:8px}.dialogue-copy{margin:11px 0 13px;max-height:155px;overflow:auto;color:#d9e8f1;font:13px/1.5 Arial,sans-serif}.dialogue-source{display:block;margin-top:9px;color:#58d9ff;font-size:10px}.dialogue-continue{display:flex;align-items:center;justify-content:space-between;width:100%;border:2px solid #58d9ff;background:#102638;color:#e8f8ff;padding:9px 10px;font:700 10px "Courier New",monospace;cursor:pointer;box-shadow:3px 3px 0 #03060a}.dialogue-continue:hover{border-color:#66e6a5;background:#153c3b}.dialogue-continue span{color:#ff9a3c}
+.player-card .mission-log-button{display:block;margin-top:8px;width:100%;padding:5px 7px;font-size:10px}.player-card .mission-log-panel{top:calc(100% + 8px);left:0;right:auto;width:min(390px,calc(100vw - 32px));max-height:calc(100vh - 120px)}
+.rom-memory-console{position:relative!important;top:auto!important;left:auto!important;right:auto!important;width:100%!important;max-height:230px!important;margin-top:10px;border:1px solid #58d9ff!important;background:linear-gradient(180deg,rgba(5,18,30,.98),rgba(7,11,19,.98))!important;padding:10px!important;box-shadow:inset 0 0 0 1px #173f55,3px 3px 0 rgba(3,6,10,.6)!important;backdrop-filter:none!important}.rom-memory-console:before{content:"R.O.M. / MEMORY CORE";display:block;margin-bottom:7px;color:#66e6a5;font:700 8px "Courier New",monospace;letter-spacing:.14em}.rom-memory-console .mission-log-head{align-items:center;border-bottom:1px solid #21435a;padding-bottom:7px}.rom-memory-console .mission-log-head h2{margin:0;color:#dff8ff;font:700 15px Arial,sans-serif;letter-spacing:.02em}.rom-memory-console .eyebrow{color:#66e6a5!important;font-size:8px}.rom-memory-console .mission-log-close{padding:3px 7px!important;border-color:#58d9ff!important;box-shadow:none!important}.rom-memory-console .mission-log-intro{margin:7px 0;color:#8faabd;font:10px/1.35 "Courier New",monospace}.rom-memory-console .mission-log-tabs{gap:3px;margin:7px 0;border-bottom:1px solid #21435a;padding-bottom:7px}.rom-memory-console .log-tab{padding:4px 6px;border-color:#31556d;background:#0b1b2a;color:#94b3c5;font-size:9px;box-shadow:none}.rom-memory-console .log-tab.active{border-color:#66e6a5;color:#9ff7c8}.rom-memory-console .mission-log-list{gap:6px;max-height:105px;overflow:auto;padding-right:3px}.rom-memory-console .log-entry{border-left:2px solid #66e6a5;background:#0b1b29;padding:7px}.rom-memory-console .log-entry>span{color:#66e6a5;font-size:7px}.rom-memory-console .log-entry h3{margin:3px 0;color:#e5f8ff;font-size:12px}.rom-memory-console .log-entry p{font-size:10px;line-height:1.3}.rom-memory-console .log-entry a{margin-top:4px;font-size:8px}.rom-memory-console .log-empty{font-size:10px;margin:4px 0}.player-card:has(.rom-memory-console.open){z-index:20}.player-card:has(.rom-memory-console.open){width:320px}
+.player-card,.environment-card{background:rgba(7,16,29,.58)!important;backdrop-filter:blur(3px);box-shadow:3px 3px 0 rgba(3,6,10,.48)!important}
+.player-card{opacity:.88}.environment-card{opacity:.82}.player-card:hover,.environment-card:hover{opacity:.98}
+.signal-game{position:absolute;z-index:17;inset:0;display:none;align-items:center;justify-content:center;background:rgba(4,7,13,.82);padding:18px}.signal-game.open{display:flex}.signal-card{width:min(600px,94%);border:2px solid #58d9ff;background:#0c1727;padding:22px;box-shadow:10px 10px 0 #03060a}.signal-card h2{margin:8px 0;color:#fff;font:700 27px Arial,sans-serif}.signal-card p{color:#b7c7d7;font:14px/1.45 Arial,sans-serif}.signal-packets{display:flex;gap:10px;justify-content:center;margin:22px 0}.signal-packet{min-width:100px;border:2px solid #46627c;background:#12243a;color:#fff;padding:15px 10px;cursor:pointer}.signal-packet span{display:block;color:#58d9ff;font:700 20px "Courier New",monospace}.signal-packet small{color:#9eb0c3}.signal-packet.used{border-color:#66e6a5;background:#153c3b}.signal-feedback{min-height:20px;color:#ffcf91;font:12px Arial,sans-serif}
+.mission-log-button{color:#ffcf91!important;border-color:#ff9a3c!important}.mission-log-panel{position:absolute;z-index:19;top:76px;right:16px;width:min(390px,calc(100% - 32px));max-height:calc(100% - 92px);display:none;overflow:auto;border:2px solid #58d9ff;background:rgba(7,16,29,.96);padding:18px;box-shadow:8px 8px 0 #03060a;backdrop-filter:blur(8px)}.mission-log-panel.open{display:block}.mission-log-head{display:flex;justify-content:space-between;align-items:start;gap:12px}.mission-log-head h2{margin:7px 0 0;color:#fff;font:700 24px Arial,sans-serif}.mission-log-intro{color:#b7c7d7;font:12px/1.45 Arial,sans-serif}.mission-log-tabs{display:flex;gap:5px;border-bottom:1px solid #29445b;padding-bottom:10px;margin:12px 0}.log-tab{border:1px solid #46627c;background:#102136;color:#b8cad8;padding:7px 9px;cursor:pointer;font:11px "Courier New",monospace}.log-tab.active{border-color:#ff9a3c;color:#ffcf91}.mission-log-list{display:grid;gap:10px}.log-entry{border-left:3px solid #58d9ff;background:#0d1a2b;padding:11px}.log-entry>span{color:#ffcf91;font:700 9px "Courier New",monospace;letter-spacing:.1em}.log-entry h3{margin:6px 0;color:#fff;font:700 16px Arial,sans-serif}.log-entry p{margin:0;color:#c5d3df;font:12px/1.45 Arial,sans-serif}.log-entry a{display:inline-block;margin-top:8px;color:#58d9ff;font-size:10px}.log-empty{color:#aab9c8;font:12px/1.5 Arial,sans-serif}@media(max-width:720px){.mission-log-panel{top:58px;right:10px;width:calc(100% - 20px);max-height:calc(100% - 70px)}.mission-log-button{font-size:0}.mission-log-button:after{content:"▤";font-size:15px}}
+/* R.O.M. memory console lives outside the Field Unit card. */
+#playerCard + .mission-log-button{position:absolute!important;z-index:4;top:122px;left:16px;width:292px;margin:0!important;text-align:left}
+#playerCard + .mission-log-button + .rom-memory-console{position:absolute!important;z-index:4;top:162px!important;left:16px!important;right:auto!important;width:292px!important;max-height:240px!important;margin:0!important}
+#playerCard + .mission-log-button + .rom-memory-console.open{display:block!important}
+@media (max-width:900px){
+  #playerCard + .mission-log-button{top:111px;left:10px;width:255px}
+  #playerCard + .mission-log-button + .rom-memory-console{top:151px!important;left:10px!important;width:255px!important;max-height:210px!important}
+}

@@ -1,0 +1,18 @@
+{
+  "name": "nasa-lost-missions",
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.12.3",
+  "private": true,
+  "description": "Presentation site for NASA Space Apps: Abandoned but not Forgotten.",
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "corepack pnpm --filter @lost-missions/web dev",
+    "build": "corepack pnpm --filter @lost-missions/web build",
+    "preview": "corepack pnpm --filter @lost-missions/web preview",
+    "validate": "node scripts/validate-content.mjs",
+    "check": "corepack pnpm run validate && corepack pnpm run build",
+    "typecheck": "corepack pnpm --filter @lost-missions/web typecheck"
+  }
+}

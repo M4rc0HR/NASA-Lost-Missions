@@ -1,0 +1,142 @@
+---
+const destinations = [
+  { id: "spirit", body: "MARS", type: "MARS · GUSEV", title: "Gusev Crater", subtitle: "Spirit · MER-A", description: "Follow the silent signal and reconstruct the story of the rover Spirit left behind on Mars.", status: "AVAILABLE", href: "/story", accent: "orange", x: "58%", y: "67%" },
+  { id: "opportunity", body: "MARS", type: "MARS · MERIDIANI", title: "Meridiani Planum", subtitle: "Opportunity · MER-B", description: "Investigate the hematite blueberries, survive a global dust storm and reconstruct Opportunity's final signal.", status: "LOCKED", unlockAfter: "spirit", href: "/opportunity", accent: "cyan", x: "50%", y: "58%" },
+  { id: "apollo", body: "MOON", type: "MOON · HADLEY-APENNINE", title: "Hadley-Apennine", subtitle: "Apollo 15 · Lunar surface", description: "A future mission about the hardware Apollo 15 left on the Moon. This interactive story is coming soon.", status: "COMING_SOON", href: "/apollo", accent: "silver", x: "50%", y: "23%" }
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="NASA Lost Missions destination map." />
+    <link rel="stylesheet" href="/site-theme.css" />
+    <title>Mission Map · NASA: Lost Missions</title>
+  </head>
+  <body>
+    <main class="mission-screen">
+      <header class="site-nav topbar" aria-label="Primary navigation">
+        <div class="brand-lockup"><a class="brand brand-home" href="/" aria-label="Return to NASA Lost Missions home"><span class="home-mark">⌂</span><span class="home-copy"><b>NASA: LOST MISSIONS</b><small>ARCHIVE RETURN // HOME</small></span></a><small class="archive-label">FIELD ARCHIVE / DESTINATION SELECT</small></div>
+        <div class="stats nav-context"><span>MISSION MAP</span></div>
+        <div class="hud-actions nav-actions"><span class="unit-label">R.O.M. · SCN-01</span><button class="btn lang-btn map-language" id="mapLanguage" type="button">EN / ES</button></div>
+      </header>
+
+      <section class="mission-layout" aria-label="Mission destination map">
+        <div class="map-panel">
+          <div class="map-heading"><span>MISSION ROUTE MAP</span><h1>Choose a world to remember.</h1><p>Three real NASA missions. One question: what stayed behind?</p></div>
+          <div class="space-map" id="spaceMap">
+            {destinations.map((destination) => (
+              <button class={`destination mission-${destination.id} ${destination.status === "AVAILABLE" ? "available" : "locked"} accent-${destination.accent}`} data-id={destination.id} style={`--x:${destination.x};--y:${destination.y}`} type="button" aria-label={`${destination.title}, ${destination.status.replace("_", " ")}`}>
+                <span class="node-core">{destination.status === "AVAILABLE" ? "✦" : "·"}</span><span class="node-pulse"></span><span class="node-label"><b>{destination.title}</b><small>{destination.status === "COMING_SOON" ? "Coming soon" : destination.subtitle}</small></span>
+              </button>
+            ))}
+            <div class="map-compass" aria-hidden="true"><span>N</span><i></i><span>S</span></div>
+            <div class="map-grid" aria-hidden="true"></div>
+          </div>
+          <div class="map-legend"><span><i class="legend-dot active"></i>AVAILABLE</span><span><i class="legend-dot future"></i>FUTURE SIGNAL</span><span><i class="legend-dot world"></i>MISSION SITE</span><span>CLICK A NODE TO INSPECT</span></div>
+        </div>
+
+        <aside class="mission-dossier" aria-live="polite">
+          <span class="eyebrow">DESTINATION DOSSIER</span>
+          <div class="dossier-icon" id="dossierIcon">✦</div>
+          <small id="dossierType">MARS · AVAILABLE</small>
+          <h2 id="dossierTitle">Gusev Crater</h2>
+          <h3 id="dossierSubtitle">Spirit · MER-A</h3>
+          <p id="dossierDescription">Follow the silent signal and reconstruct the story of a rover that stayed behind.</p>
+          <div class="dossier-line"><span>MISSION STATUS</span><b id="dossierStatus">READY TO DEPLOY</b></div>
+          <button class="deploy-button" id="deployButton" type="button">ENTER GUSEV CRATER <span>→</span></button>
+          <p class="dossier-hint" id="dossierHint">Spirit is the first playable mission.</p>
+        </aside>
+      </section>
+    </main>
+    <div id="warpTransition" class="warp-transition" aria-hidden="true"><span>MISSION TRANSFER</span><b id="warpTitle">GUSEV CRATER</b><i></i><small>R.O.M. SIGNAL LOCKED</small></div>
+    <script is:inline define:vars={{ destinations }}>
+      const nodes = [...document.querySelectorAll(".destination")];
+      const title = document.querySelector("#dossierTitle");
+      const subtitle = document.querySelector("#dossierSubtitle");
+      const description = document.querySelector("#dossierDescription");
+      const type = document.querySelector("#dossierType");
+      const status = document.querySelector("#dossierStatus");
+      const icon = document.querySelector("#dossierIcon");
+      const deploy = document.querySelector("#deployButton");
+      const hint = document.querySelector("#dossierHint");
+      const mapLanguage = document.querySelector("#mapLanguage");
+      let mapLang = localStorage.getItem("lost-missions.language") || "en";
+      const mapEs = { spirit: { title: "Cráter Gusev", subtitle: "Spirit · MER-A", description: "Sigue la señal silenciosa y reconstruye la historia de Spirit, el rover que quedó en Marte." }, opportunity: { title: "Planicie Meridiani", subtitle: "Opportunity · MER-B", description: "Investiga las moras azules, simula una tormenta global y reconstruye la última señal de Opportunity." }, apollo: { title: "Hadley-Apennine", subtitle: "Apollo 15 · Superficie lunar", description: "Una futura misión sobre el equipo que Apollo 15 dejó en la Luna. Esta historia interactiva estará disponible próximamente." } };
+      function applyMapStatic() { const es = mapLang === "es"; document.documentElement.lang = mapLang; document.querySelector('.archive-label').textContent = es ? 'ARCHIVO DE CAMPO / SELECCIÓN DE DESTINO' : 'FIELD ARCHIVE / DESTINATION SELECT'; document.querySelector('.map-heading span').textContent = es ? 'MAPA DE RUTA DE MISIÓN' : 'MISSION ROUTE MAP'; document.querySelector('.map-heading h1').textContent = es ? 'Elige un mundo para recordar.' : 'Choose a world to remember.'; document.querySelector('.map-heading p').textContent = es ? 'Tres misiones reales de NASA. Una pregunta: ¿qué quedó atrás?' : 'Three real NASA missions. One question: what stayed behind?'; document.querySelector('.mission-dossier .eyebrow').textContent = es ? 'EXPEDIENTE DE DESTINO' : 'DESTINATION DOSSIER'; document.querySelector('.dossier-line span').textContent = es ? 'ESTADO DE MISIÓN' : 'MISSION STATUS'; document.querySelector('.map-legend').lastElementChild.textContent = es ? 'HAZ CLIC EN UN NODO' : 'CLICK A NODE TO INSPECT'; }
+      const progressKey = "lost-missions.completed";
+      const readCompleted = () => {
+        try { return JSON.parse(localStorage.getItem(progressKey) || "[]"); } catch { return []; }
+      };
+      const completed = readCompleted();
+      const isUnlocked = (destination) => destination.status !== "COMING_SOON" && (destination.id === "spirit" || Boolean(destination.unlockAfter && completed.includes(destination.unlockAfter)));
+      const unlockedDestinations = destinations.map((destination) => ({ ...destination, unlocked: isUnlocked(destination), comingSoon: destination.status === "COMING_SOON" }));
+      const nodeFor = (id) => nodes.find((node) => node.dataset.id === id);
+      unlockedDestinations.forEach((destination) => {
+        const node = nodeFor(destination.id);
+        if (!node) return;
+        node.classList.toggle("available", destination.unlocked);
+        node.classList.toggle("locked", !destination.unlocked);
+        node.setAttribute("aria-label", `${destination.title}, ${destination.unlocked ? "AVAILABLE" : "LOCKED"}`);
+        const core = node.querySelector(".node-core");
+        if (core) core.textContent = destination.unlocked ? "✦" : "·";
+      });
+      let selected = unlockedDestinations[0];
+      function inspect(id) {
+        selected = unlockedDestinations.find((item) => item.id === id) || unlockedDestinations[0];
+        nodes.forEach((node) => node.classList.toggle("selected", node.dataset.id === selected.id));
+        const translated = mapLang === "es" ? mapEs[selected.id] : null;
+        title.textContent = translated?.title || selected.title;
+        subtitle.textContent = translated?.subtitle || selected.subtitle;
+        description.textContent = translated?.description || selected.description;
+        type.textContent = `${mapLang === "es" ? (selected.body === "MOON" ? "LUNA" : "MARTE") : selected.type} · ${selected.comingSoon ? (mapLang === "es" ? "PRÓXIMAMENTE" : "COMING SOON") : selected.unlocked ? (mapLang === "es" ? "DISPONIBLE" : "AVAILABLE") : (mapLang === "es" ? "BLOQUEADA" : "LOCKED")}`;
+        status.textContent = selected.comingSoon ? (mapLang === "es" ? "PRÓXIMAMENTE" : "COMING SOON") : selected.unlocked ? (mapLang === "es" ? "LISTA PARA EXPLORAR" : "READY TO DEPLOY") : (mapLang === "es" ? "SEÑAL BLOQUEADA" : "SIGNAL LOCKED");
+        icon.textContent = selected.unlocked ? "✦" : "·";
+        deploy.disabled = !selected.unlocked;
+        deploy.textContent = selected.comingSoon ? (mapLang === "es" ? "PRÓXIMAMENTE" : "COMING SOON") : selected.unlocked ? (mapLang === "es" ? `ENTRAR A ${title.textContent.toUpperCase()}  →` : `ENTER ${selected.title.toUpperCase()}  →`) : (mapLang === "es" ? "MISIÓN BLOQUEADA" : "MISSION LOCKED");
+        hint.textContent = selected.comingSoon ? (mapLang === "es" ? "Esta misión aún no está desarrollada. Pronto podrás explorarla." : "This mission is not developed yet. It will be available soon.") : selected.unlocked ? (mapLang === "es" ? `Jugable ahora · sitio de misión en ${selected.body === "MOON" ? "la Luna" : "Marte"}.` : `Playable now · ${selected.body} mission site.`) : (mapLang === "es" ? `Completa la misión anterior para desbloquear esta señal.` : `Complete the previous mission to unlock this ${selected.body} signal.`);
+      }
+      nodes.forEach((node) => node.addEventListener("click", () => inspect(node.dataset.id)));
+      deploy.addEventListener("click", () => { if (deploy.disabled) return; document.querySelector("#warpTitle").textContent = selected.title.toUpperCase(); document.querySelector("#warpTransition").classList.add("active"); window.setTimeout(() => { window.location.href = selected.href; }, 720); });
+      mapLanguage.addEventListener("click", () => { mapLang = mapLang === "en" ? "es" : "en"; localStorage.setItem("lost-missions.language", mapLang); mapLanguage.textContent = mapLang === "en" ? "EN / ES" : "ES / EN"; applyMapStatic(); inspect(selected.id); });
+      mapLanguage.textContent = mapLang === "en" ? "EN / ES" : "ES / EN";
+      applyMapStatic();
+      inspect("spirit");
+    </script>
+  </body>
+</html>
+
+<style>
+  :root{color-scheme:dark;--bg:#07080d;--panel:#0f1725;--blue:#58d9ff;--orange:#ff9a3c;--muted:#8999ae;--line:#26384e}
+  *{box-sizing:border-box}html,body{margin:0;width:100%;min-width:0;height:100%;overflow:hidden;background:var(--bg);color:#fff;font-family:"Courier New",monospace}button,a{font:inherit}.mission-screen{width:100%;height:100dvh;min-height:100dvh;padding:16px 20px;display:flex;flex-direction:column;gap:16px;background:radial-gradient(circle at 28% 44%,#183044 0,transparent 28%),radial-gradient(circle at 78% 18%,#321e22 0,transparent 25%),#07080d}.topbar{height:42px;display:flex;align-items:center;gap:18px;border-bottom:1px solid #243347;color:var(--muted);font-size:11px}.brand{color:#fff;text-decoration:none;font-weight:900}.brand:before{content:"●";color:var(--orange);margin-right:8px}.archive-label{color:var(--blue);font-size:9px;letter-spacing:.12em}.unit-label{margin-left:auto;color:var(--orange);font-size:10px}.mission-layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;min-height:0;flex:1;border:1px solid #344a62;background:#0c1320;overflow:hidden}.map-panel{position:relative;min-width:0;padding:24px}.map-heading{position:absolute;z-index:3;top:22px;left:26px;pointer-events:none}.map-heading span,.eyebrow{color:var(--blue);font-size:10px;font-weight:700;letter-spacing:.14em}.map-heading h1{margin:8px 0 3px;font:700 28px Arial,sans-serif}.map-heading p{margin:0;color:#9eafc2;font:12px Arial,sans-serif}.space-map{position:relative;width:100%;height:100%;min-height:440px;overflow:hidden;background:linear-gradient(145deg,#0b1825,#101722 55%,#281b22)}.map-grid{position:absolute;inset:0;opacity:.23;background-image:linear-gradient(#58d9ff18 1px,transparent 1px),linear-gradient(90deg,#58d9ff18 1px,transparent 1px);background-size:46px 46px;mask-image:linear-gradient(180deg,transparent,#000 25%,#000 78%,transparent)}.space-map:before,.space-map:after{content:"";position:absolute;border-radius:50%;background:#fff;box-shadow:0 0 7px #fff}.space-map:before{width:2px;height:2px;left:12%;top:32%;box-shadow:140px 70px 0 #58d9ff,310px -20px 0 #fff,470px 160px 0 #ff9a3c,650px 25px 0 #fff,790px 230px 0 #58d9ff,210px 280px 0 #fff}.space-map:after{width:3px;height:3px;left:66%;top:19%;box-shadow:-380px 180px 0 #fff,120px 90px 0 #ff9a3c,-80px 230px 0 #58d9ff}.destination{position:absolute;z-index:4;left:var(--x);top:var(--y);width:26px;height:26px;padding:0;border:0;background:transparent;color:#fff;transform:translate(-50%,-50%);cursor:pointer}.node-core{position:absolute;inset:3px;display:grid;place-items:center;border:2px solid currentColor;border-radius:50%;background:#09121e;color:currentColor;font-size:12px;line-height:1;box-shadow:0 0 12px currentColor}.node-pulse{position:absolute;inset:-7px;border:1px solid currentColor;border-radius:50%;opacity:.25}.destination:hover .node-pulse,.destination.selected .node-pulse{inset:-11px;opacity:.8;animation:pulse 1.2s infinite}.node-label{position:absolute;top:32px;left:50%;width:150px;transform:translateX(-50%);display:flex;flex-direction:column;gap:3px;text-align:center;pointer-events:none;text-shadow:0 2px 3px #000}.node-label b{font:700 11px Arial,sans-serif}.node-label small{color:#9daec1;font:9px Arial,sans-serif}.accent-orange{color:var(--orange)}.accent-cyan{color:var(--blue)}.accent-silver{color:#d9e5ed}.accent-red{color:#ff7467}.accent-violet{color:#ca9cff}.destination.locked{opacity:.58}.destination.locked .node-core{border-style:dashed}.map-compass{position:absolute;z-index:3;right:18px;bottom:20px;display:grid;place-items:center;gap:2px;color:#8da0b6;font-size:9px}.map-compass i{display:block;width:1px;height:22px;background:linear-gradient(#ff9a3c,#58d9ff)}.map-legend{display:flex;gap:16px;margin-top:10px;color:#8fa0b5;font-size:9px}.map-legend span{display:flex;align-items:center;gap:5px}.legend-dot{width:8px;height:8px;border:1px solid currentColor;border-radius:50%}.legend-dot.active{color:var(--orange);background:var(--orange)}.legend-dot.future{color:var(--blue);border-style:dashed}@keyframes pulse{50%{transform:scale(1.12);opacity:.25}}
+  .mission-dossier{display:flex;flex-direction:column;align-items:flex-start;border-left:1px solid #304258;background:linear-gradient(180deg,#111b2b,#0a101b);padding:30px 22px}.dossier-icon{display:grid;place-items:center;width:66px;height:66px;margin:32px 0 18px;border:1px solid var(--orange);border-radius:50%;color:var(--orange);font-size:28px;box-shadow:0 0 30px #ff9a3c44}.mission-dossier>small{color:#a9b8c8;font-size:9px;letter-spacing:.1em}.mission-dossier h2{margin:8px 0 2px;font:700 29px Arial,sans-serif}.mission-dossier h3{margin:0 0 18px;color:var(--orange);font:700 13px Arial,sans-serif}.mission-dossier p{color:#aab8c9;font:13px/1.5 Arial,sans-serif}.dossier-line{display:flex;justify-content:space-between;width:100%;margin-top:20px;padding:12px 0;border-top:1px solid #2d4056;border-bottom:1px solid #2d4056;color:#7f91a6;font-size:9px}.dossier-line b{color:#66e6a5;font-size:9px}.deploy-button{width:100%;margin-top:auto;border:1px solid var(--orange);background:var(--orange);color:#1c0e06;padding:12px 10px;font-weight:900;cursor:pointer}.deploy-button:disabled{border-color:#4a5b6e;background:#263446;color:#8b9caf;cursor:not-allowed}.deploy-button span{float:right}.dossier-hint{margin:12px 0 0!important;color:#7f91a6!important;font-size:10px!important}
+  /* Pixel-art map language: hard edges, tile-like grid and chunky mission markers. */
+  .mission-screen{background:#090b12;image-rendering:pixelated}.mission-layout{border:3px solid #3b5265;box-shadow:6px 6px 0 #030509;background:#18202b}.map-panel{background:#152331}.space-map{border:2px solid #627589;background-color:#142735;background-image:linear-gradient(#58d9ff16 2px,transparent 2px),linear-gradient(90deg,#58d9ff16 2px,transparent 2px),linear-gradient(135deg,#243d48 25%,transparent 25% 50%,#1b313d 50% 75%,transparent 75%);background-size:32px 32px,32px 32px,64px 64px;image-rendering:pixelated}.space-map:before,.space-map:after{border-radius:0;width:3px;height:3px;box-shadow:140px 70px 0 #58d9ff,310px -20px 0 #fff,470px 160px 0 #ff9a3c,650px 25px 0 #fff,790px 230px 0 #58d9ff,210px 280px 0 #fff}.destination{width:32px;height:32px}.node-core{inset:5px;border-radius:4px;border-width:3px;box-shadow:3px 3px 0 #071018,0 0 0 2px #071018;font-size:14px}.node-pulse{inset:-5px;border-width:2px;border-radius:4px}.node-label{top:36px;padding:4px 6px;border:2px solid #526b7d;background:#0b1520ee;box-shadow:3px 3px 0 #071018}.node-label b{font-size:10px}.node-label small{font-size:8px}.destination.locked .node-core{border-style:dashed}.map-legend{border-top:2px solid #304a5c;padding-top:8px}.mission-dossier{border-left:3px solid #3b5265;background:#1a2430;padding:24px 20px;box-shadow:inset 3px 0 #0a1118}.dossier-icon{width:58px;height:58px;margin:24px 0 16px;border:3px solid var(--orange);border-radius:7px;box-shadow:4px 4px 0 #071018}.deploy-button{border:3px solid #ffcf91;box-shadow:4px 4px 0 #070b10}.deploy-button:disabled{border-color:#526b7d;box-shadow:4px 4px 0 #070b10}.warp-transition{position:fixed;z-index:30;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#070b12;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease}.warp-transition.active{opacity:1;visibility:visible}.warp-transition span{color:var(--blue);font-size:10px;letter-spacing:.16em}.warp-transition b{color:#fff;font:700 32px Arial,sans-serif}.warp-transition i{display:block;width:min(420px,70vw);height:12px;border:3px solid #526b7d;background:repeating-linear-gradient(90deg,var(--orange) 0 18px,#233444 18px 28px);animation:deploy-scan .72s linear both}.warp-transition small{color:#8fa0b5;font-size:9px}@keyframes deploy-scan{from{background-position:-240px 0}to{background-position:0 0}}
+  @media(max-width:820px){.mission-screen{padding:10px}.mission-layout{grid-template-columns:1fr;overflow:auto}.map-panel{min-height:58vh;padding:14px}.space-map{min-height:420px}.mission-dossier{min-height:270px;border-left:0;border-top:1px solid #304258;padding:20px}.dossier-icon{margin:15px 0 10px}.deploy-button{margin-top:12px}.archive-label{display:none}.map-heading h1{font-size:22px}}
+  .map-heading,.map-legend,.map-compass,.destination{z-index:6}
+  .legend-dot.world{color:#d9e5ed;background:#d9e5ed;border-radius:2px}
+  .destination{transform:translate(-50%,-50%) scale(1.14)}
+  .node-label{width:132px}
+  .destination:hover .node-pulse,.destination.selected .node-pulse{inset:-9px}
+.node-label{z-index:8;min-height:34px;background:#091522f5}
+.mission-spirit .node-label{top:-47px}
+.mission-opportunity .node-label{top:36px}
+.mission-apollo .node-label{top:36px}
+.mission-insight .node-label{top:36px}
+.mission-deep-space .node-label{top:36px}
+@media(max-width:820px){.mission-spirit .node-label{top:36px}}
+  /* The supplied pixel-art atlas is the map surface; mission nodes remain interactive above it. */
+  .space-map{background:#071b34 url('/assets/mission-map-pixel.png') center/cover no-repeat!important;image-rendering:auto}
+  .map-grid,.space-map:before,.space-map:after{display:none!important}
+  .node-label{z-index:8;background:#071525ee;border:2px solid #46657d;padding:4px 7px;box-shadow:3px 3px 0 #050a12;min-height:34px}
+  .mission-spirit .node-label{top:-47px}
+  .mission-opportunity .node-label,.mission-apollo .node-label,.mission-insight .node-label,.mission-deep-space .node-label{top:36px}
+  .destination{image-rendering:pixelated}
+  .mission-layout{border:0!important;box-shadow:none!important;background:transparent!important}
+  .map-panel{padding:0!important;background:transparent!important}
+  .space-map{border:0!important}
+  .map-legend{border-top:0!important;padding-top:8px}
+  @media(max-width:820px){.space-map{background-position:center center}.mission-spirit .node-label{top:36px}}
+</style>

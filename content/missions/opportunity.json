@@ -1,0 +1,309 @@
+{
+  "id": "opportunity",
+  "title": "NASA: LOST MISSIONS",
+  "rover_name": "OPPORTUNITY",
+  "unlock_after": "spirit",
+  "subtitle": "Opportunity RPG Mission",
+  "location": "Meridiani Planum · Mars",
+  "story_arc": {
+    "opening": "Opportunity was sent to Meridiani Planum to investigate rocks and soils shaped by ancient water.",
+    "turn": "The rover kept exploring for almost 15 years and traveled 45.16 kilometers, far beyond its planned 90 sols.",
+    "ending": "A planet-wide dust storm darkened the sky. Opportunity's last signal arrived on June 10, 2018, as the rover struggled to make energy.",
+    "emotional_line": "Its final message was not a farewell speech: it was a dark, incomplete image sent through the storm."
+  },
+  "hardware": [
+    {
+      "id": "opportunity-rover",
+      "name": "Opportunity (MER-B)",
+      "type": "Mars Exploration Rover",
+      "what_it_was": "A solar-powered robotic geologist equipped with cameras, a robotic arm and rock-analysis instruments.",
+      "why_sent": "To study Martian rocks and soil for evidence of past water and environments that may once have been habitable.",
+      "instrument": "Panoramic Camera, APXS, Microscopic Imager and Rock Abrasion Tool (RAT)",
+      "discovery": "Opportunity found hematite-rich spheres nicknamed blueberries and other evidence that liquid water shaped ancient Mars.",
+      "why_left": "A planet-wide dust storm reduced sunlight reaching its solar panels. After months of recovery attempts, NASA ended the mission in 2019.",
+      "what_remains": "The rover remains in Perseverance Valley at the edge of Endeavour Crater. Its instruments and structure are still there; the images and data it sent are preserved in NASA's archives on Earth.",
+      "current_status": {
+        "location": "Perseverance Valley, edge of Endeavour Crater, Mars",
+        "status": "Inactive; mission completed",
+        "last_event": "Last communication: June 10, 2018. NASA declared the mission complete: February 13, 2019.",
+        "still_in_use": "No",
+        "source_id": "nasa_opportunity"
+      }
+    }
+  ],
+  "controls_tip": "Move: arrows / WASD · Interact: A, Z, E, Enter or Space",
+  "sample_goal": 5,
+  "sources": {
+    "pds_mer": {
+      "label": "NASA PDS Geosciences · MER",
+      "url": "https://pds-geosciences.wustl.edu/missions/mer/"
+    },
+    "nasa_opportunity": {
+      "label": "NASA Science · Opportunity",
+      "url": "https://science.nasa.gov/mission/mer-opportunity/"
+    },
+    "nasa_highlights": {
+      "label": "NASA Science · MER Highlights",
+      "url": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-highlights/"
+    },
+    "jpl_complete": {
+      "label": "NASA JPL · Opportunity Mission Complete",
+      "url": "https://science.nasa.gov/missions/mer/nasas-opportunity-rover-mission-on-mars-comes-to-end/"
+    },
+    "meridiani_image": {
+      "label": "NASA Science · Meridiani Planum",
+      "url": "https://science.nasa.gov/resource/meridiani-planum-2/"
+    },
+    "self_portrait": {
+      "label": "NASA Science · Opportunity self-portrait",
+      "url": "https://science.nasa.gov/resource/self-portrait-by-freshly-cleaned-opportunity-mars-rover-false-color/"
+    },
+    "blueberries": {
+      "label": "NASA Science · \"Berries\" on the Ground",
+      "url": "https://science.nasa.gov/resource/berries-on-the-ground/"
+    },
+    "landing_site": {
+      "label": "NASA Image Library · Rover Landing Hardware at Eagle Crater",
+      "url": "https://images.nasa.gov/details-PIA21494"
+    },
+    "final_traverse": {
+      "label": "NASA Image Library · Opportunity's Final Traverse Map",
+      "url": "https://images.nasa.gov/details-PIA23178"
+    },
+    "last_message": {
+      "label": "NASA Science · Opportunity's Last Message",
+      "url": "https://science.nasa.gov/resource/opportunitys-last-message/"
+    }
+  },
+  "gallery": [
+    {
+      "id": "meridiani-view",
+      "title": "Meridiani from Opportunity's eyes",
+      "kid_text": "This is real Mars terrain seen by Opportunity. The rover was not just driving: it was looking for clues in rocks and soil.",
+      "credit": "NASA/JPL-Caltech/Cornell",
+      "image_url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/3/36899_20_Meridiani_Planum.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1932&w=2589",
+      "source_id": "meridiani_image"
+    },
+    {
+      "id": "opportunity-self",
+      "title": "Opportunity's self-portrait",
+      "kid_text": "Opportunity built this self-portrait from many camera images while it worked on Mars, giving a real view of the rover in the field.",
+      "credit": "NASA/JPL-Caltech/Cornell Univ./Arizona State Univ.",
+      "image_url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia18/pia18080/PIA18080.jpg?fit=clip&w=1600",
+      "source_id": "self_portrait"
+    },
+    {
+      "id": "blueberries",
+      "title": "Martian \"blueberries\" on the ground",
+      "kid_text": "Opportunity found round, iron-rich spheres nicknamed blueberries. Scientists studied them as clues that liquid water once shaped Meridiani Planum.",
+      "credit": "NASA/JPL/Cornell/USGS",
+      "image_url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia05/pia05273/PIA05273.jpg?fit=clip&w=1600",
+      "source_id": "blueberries"
+    },
+    {
+      "id": "landing-site",
+      "title": "Rover landing hardware at Eagle Crater",
+      "kid_text": "From orbit, the Mars Reconnaissance Orbiter spotted Opportunity's landing hardware in Eagle Crater, where the mission began on Mars.",
+      "credit": "NASA/JPL-Caltech/Univ. of Arizona",
+      "image_url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia21/pia21494/PIA21494.jpg?fit=clip&w=1600",
+      "source_id": "landing_site"
+    },
+    {
+      "id": "final-traverse",
+      "title": "Opportunity's final traverse map",
+      "kid_text": "This map shows the long route Opportunity drove across Mars and where it was working in Perseverance Valley when contact was lost.",
+      "credit": "NASA/JPL-Caltech",
+      "image_url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia23/pia23178/PIA23178.jpg?fit=clip&w=1600",
+      "source_id": "final_traverse"
+    },
+    {
+      "id": "last-message",
+      "title": "Opportunity's last message",
+      "kid_text": "This noisy, incomplete image taken on June 10, 2018 was the last data Opportunity sent back during the global dust storm.",
+      "credit": "NASA/JPL-Caltech/Cornell/ASU",
+      "image_url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia22/pia22929/PIA22929.jpg?fit=clip&w=1600",
+      "source_id": "last_message"
+    }
+  ],
+  "map": {
+    "width": 38,
+    "height": 26,
+    "spirit_soil": {
+      "x": 28,
+      "y": 11
+    },
+    "dust_field": {
+      "x": 31,
+      "y": 18
+    }
+  },
+  "player": {
+    "id": "astra-1",
+    "name": "R.O.M.",
+    "role": "Field Research Robot",
+    "class": "SCN-01",
+    "x": 8,
+    "y": 22
+  },
+  "entities": [
+    {
+      "k": "npc",
+      "x": 8,
+      "y": 20
+    },
+    {
+      "k": "rov",
+      "x": 27,
+      "y": 6
+    },
+    {
+      "k": "case",
+      "x": 13,
+      "y": 14
+    },
+    {
+      "k": "smp",
+      "x": 6,
+      "y": 5,
+      "i": 0
+    },
+    {
+      "k": "smp",
+      "x": 20,
+      "y": 10,
+      "i": 1
+    },
+    {
+      "k": "smp",
+      "x": 34,
+      "y": 20,
+      "i": 2
+    },
+    {
+      "k": "smp",
+      "x": 17,
+      "y": 5,
+      "i": 3
+    },
+    {
+      "k": "smp",
+      "x": 24,
+      "y": 22,
+      "i": 4
+    },
+    {
+      "k": "dish",
+      "x": 31,
+      "y": 18
+    }
+  ],
+  "entity_names": {
+    "npc": "DR. VEGA",
+    "rov": "OPPORTUNITY",
+    "sorter": "GEOLOGY SORTER",
+    "sphere": "BLUEBERRY SAMPLE",
+    "solar": "SOLAR PANEL STATION",
+    "case": "GEOLOGY SORTER",
+    "smp": "BLUEBERRY SAMPLE",
+    "dish": "SOLAR PANEL STATION"
+  },
+  "sample_facts": [
+    {
+      "text": "Opportunity’s RAT tool brushed rock surfaces so its instruments could examine fresh material underneath.",
+      "source_id": "pds_mer"
+    },
+    {
+      "text": "Opportunity’s Mini-TES identified minerals from a distance using infrared measurements.",
+      "source_id": "pds_mer"
+    },
+    {
+      "text": "Opportunity’s APXS measured the chemical composition of rocks and soil.",
+      "source_id": "pds_mer"
+    },
+    {
+      "text": "The Microscopic Imager helped Opportunity inspect tiny textures on Martian rocks and soil.",
+      "source_id": "pds_mer"
+    },
+    {
+      "text": "Opportunity used its cameras to build panoramas and document the places it explored.",
+      "source_id": "nasa_opportunity"
+    }
+  ],
+  "dialogue": {
+    "intro_npc_1": "Welcome, R.O.M. Meridiani Planum is full of round stones that look like tiny blueberries.",
+    "intro_npc_2": "Find Opportunity, sort the mineral clues, and discover why scientists connected this place with ancient water.",
+    "npc_hint": "Look for the rover, the geology sorter, dark-blue spheres, and the solar panel station.",
+    "npc_first_hint": "Opportunity is north-east of here. Walk next to it and press A.",
+    "rover_before_npc": "A quiet rover rests in the dust. Maybe Dr. Vega can help you understand it.",
+    "rover_intro": "Opportunity (MER-B) launched on July 7, 2003 and landed in Meridiani Planum on January 25, 2004 (UTC; January 24, 2004 PST).",
+    "rover_after_id": "Correct. Opportunity lasted almost 15 years, far beyond its planned 90 sols.",
+    "rover_waiting": "Opportunity is still quiet. You need mineral evidence and the final dust-storm clue.",
+    "case_locked": "A geology sorter is offline. First identify the rover so you know what the samples mean.",
+    "case_open": "You found the geology sorter. New skill unlocked: Mineral Classification.",
+    "case_fact": "Opportunity used instruments including APXS, the Microscopic Imager and the RAT to study rocks and soil.",
+    "dish": "The solar panel station is a simulation of the engineering problem. It can help you understand why Opportunity's signal weakened.",
+    "panel": "SIMULATION: During a global dust storm, less sunlight could reach Opportunity's solar panels. The real rover's historical ending cannot be changed here.",
+    "soil_locked": "A field of round stones. You need the geology sorter before classifying them.",
+    "soil_done": "You already recorded this mineral clue.",
+    "soil_fact": "Opportunity found hematite-rich spheres, nicknamed blueberries, in Meridiani Planum. NASA explains that these minerals are clues to liquid water in Mars' past.",
+    "soil_good": "Good. The rounded spheres are now part of your evidence log.",
+    "nothing": "Nothing to inspect here. Try people, machines, tools, samples, or the solar station."
+  },
+  "questions": {
+    "mission_length": {
+      "prompt": "What mineral clue made Meridiani Planum famous in Opportunity's story?",
+      "options": [
+        "Hematite-rich ‘blueberries’",
+        "Ice crystals",
+        "Bright sulfur snow"
+      ],
+      "correct": 0
+    },
+    "silica": {
+      "prompt": "Hematite-rich blueberries can point to:",
+      "options": [
+        "A recent impact",
+        "Liquid water in Mars' past",
+        "The rover's shadow"
+      ],
+      "correct": 1
+    },
+    "final": {
+      "prompt": "Rebuild Opportunity's final story:",
+      "options": [
+        "A meteor destroyed it",
+        "A global dust storm cut sunlight, power fell, and the rover stopped communicating",
+        "NASA turned it off to launch another rover"
+      ],
+      "correct": 1
+    }
+  },
+  "final_clues": [
+    {
+      "kind": "game_event",
+      "text": "SIMULATION CLUE: A Mars-wide dust storm darkened the sky and reduced sunlight reaching Opportunity's solar panels."
+    },
+    {
+      "kind": "nasa_data",
+      "text": "CLUE #02: Opportunity's solar-powered systems had less energy available while the storm continued.",
+      "source_id": "nasa_opportunity"
+    },
+    {
+      "kind": "nasa_data",
+      "text": "CLUE #03: Opportunity's last signal was heard on June 10, 2018; NASA declared the mission complete on February 13, 2019.",
+      "source_id": "jpl_complete"
+    }
+  ],
+  "storm": {
+    "start": "Dust event! The sky turns orange and the rover's solar energy drops.",
+    "fact": "NASA reported that a historic Mars-wide dust storm reduced the energy available to Opportunity's solar panels.",
+    "success": "SIMULATION COMPLETE: You explored the power problem. In the historical record, Opportunity still stopped communicating during the storm.",
+    "source_id": "jpl_complete"
+  },
+  "ending": {
+    "title": "You discovered the story of Opportunity.",
+    "codex": "Space Codex: Opportunity ✓",
+    "tagline": "They were left behind. Their stories weren't.",
+    "codex_text": "Opportunity complete: planned for 90 sols, operated for almost 15 years, traveled 45.16 kilometers, and helped reveal that liquid water shaped Mars in the past. Its last signal was a dark, incomplete image sent during a planet-wide dust storm."
+  }
+}

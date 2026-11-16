@@ -1,0 +1,248 @@
+{
+  "id": "spirit",
+  "title": "NASA: LOST MISSIONS",
+  "rover_name": "SPIRIT",
+  "subtitle": "Spirit RPG Mission",
+  "location": "Gusev Crater · Mars",
+  "story_arc": {
+    "opening": "Spirit was sent to Gusev Crater to investigate rocks and soils that might record ancient water.",
+    "turn": "A wheel became stuck, but the rover kept working as a stationary science platform near Home Plate.",
+    "ending": "As Martian winter approached, available solar energy fell. Spirit's last communication was received on March 22, 2010; NASA ended recovery efforts on May 25, 2011.",
+    "emotional_line": "Spirit could no longer drive, but it kept listening to Mars until it could no longer call home."
+  },
+  "hardware": [
+    {
+      "id": "spirit-rover",
+      "name": "Spirit (MER-A)",
+      "type": "Mars Exploration Rover",
+      "what_it_was": "A solar-powered robotic geologist about the size of a golf cart.",
+      "why_sent": "To study rocks and soil in Gusev Crater for clues about water and whether ancient Mars could have been habitable.",
+      "instrument": "Rock Abrasion Tool (RAT) and Alpha Particle X-ray Spectrometer (APXS)",
+      "discovery": "Spirit found silica-rich soil near Home Plate, evidence of an environment shaped by water or steam.",
+      "why_left": "A wheel became stuck in 2009. Spirit continued as a stationary science platform before losing contact during the Martian winter.",
+      "what_remains": "The rover remains at its final location in Gusev Crater, along with its instruments and power system.",
+      "current_status": {
+        "location": "Gusev Crater, Mars",
+        "status": "Inactive; mission completed",
+        "last_event": "Last communication: March 22, 2010. NASA ended recovery efforts and completed the mission: May 25, 2011.",
+        "still_in_use": "No",
+        "source_id": "nasa_spirit"
+      }
+    }
+  ],
+  "controls_tip": "Move: arrows / WASD · Interact: A, Z, E, Enter or Space",
+  "sources": {
+    "pds_mer": {
+      "label": "NASA PDS Geosciences · MER",
+      "url": "https://pds-geosciences.wustl.edu/missions/mer/"
+    },
+    "nasa_spirit": {
+      "label": "NASA Science · Spirit",
+      "url": "https://science.nasa.gov/mission/mer-spirit/"
+    },
+    "nasa_highlights": {
+      "label": "NASA Science · MER Highlights",
+      "url": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-highlights/"
+    },
+    "gusev_image": {
+      "label": "NASA Science · Perched Above Gusev Crater",
+      "url": "https://science.nasa.gov/resource/perched-above-gusev-crater/"
+    },
+    "self_portrait": {
+      "label": "NASA · Spirit's Self-Portrait",
+      "url": "https://www.nasa.gov/image-article/spirits-self-portrait/"
+    },
+    "home_plate": {
+      "label": "NASA Science Photojournal · Rover’s Wheel Churns Up Bright Martian Soil",
+      "url": "https://science.nasa.gov/photojournal/rovers-wheel-churns-up-bright-martian-soil-stereo/"
+    },
+    "landing_site": {
+      "label": "NASA Science · Spirit Landing Site",
+      "url": "https://science.nasa.gov/photojournal/mars-exploration-rover-landing-site-at-gusev-crater/"
+    }
+  },
+  "gallery": [
+    {
+      "id": "gusev-view",
+      "title": "Gusev from Spirit's eyes",
+      "kid_text": "This is real Mars terrain seen by Spirit. The rover was not just driving: it was looking for clues in rocks and soil.",
+      "credit": "NASA/JPL-Caltech/Cornell",
+      "image_url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia06/pia06770/PIA06770.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1436&w=3769",
+      "source_id": "gusev_image"
+    },
+    {
+      "id": "spirit-self",
+      "title": "Spirit's self-portrait",
+      "kid_text": "Spirit used its camera to build a big panorama. It helps us imagine where the rover worked.",
+      "credit": "NASA/JPL-Caltech/Cornell",
+      "image_url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia16/pia16442/PIA16442.jpg?crop=faces%2Cfocalpoint&fit=clip&h=12953&w=12953",
+      "source_id": "self_portrait"
+    },
+    {
+      "id": "bright-soil",
+      "title": "A wheel uncovers a clue",
+      "kid_text": "Spirit’s stuck wheel scratched the ground and exposed bright, nearly pure silica. Scientists linked it to water and possible hot springs or steam vents long ago.",
+      "credit": "NASA/JPL-Caltech/Cornell",
+      "image_url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA11755.jpg",
+      "source_id": "home_plate"
+    },
+    {
+      "id": "landing-site",
+      "title": "Spirit’s landing site from orbit",
+      "kid_text": "A camera on the Mars Reconnaissance Orbiter could see the rover’s landing area from space, including tracks and nearby landmarks.",
+      "credit": "NASA/JPL-Caltech/University of Arizona",
+      "image_url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia01/pia01879/PIA01879.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1621&w=1663",
+      "source_id": "landing_site"
+    }
+  ],
+  "map": {
+    "width": 34,
+    "height": 24,
+    "spirit_soil": {
+      "x": 21,
+      "y": 13
+    },
+    "dust_field": {
+      "x": 26,
+      "y": 16
+    }
+  },
+  "player": {
+    "id": "astra-1",
+    "name": "R.O.M.",
+    "role": "Field Research Robot",
+    "class": "SCN-01",
+    "x": 15,
+    "y": 19
+  },
+  "entities": [
+    {
+      "k": "npc",
+      "x": 13,
+      "y": 17
+    },
+    {
+      "k": "rov",
+      "x": 16,
+      "y": 9
+    },
+    {
+      "k": "case",
+      "x": 9,
+      "y": 13
+    },
+    {
+      "k": "smp",
+      "x": 5,
+      "y": 19,
+      "i": 0
+    },
+    {
+      "k": "smp",
+      "x": 28,
+      "y": 4,
+      "i": 1
+    },
+    {
+      "k": "smp",
+      "x": 27,
+      "y": 20,
+      "i": 2
+    },
+    {
+      "k": "dish",
+      "x": 22,
+      "y": 8
+    }
+  ],
+  "sample_facts": [
+    {
+      "text": "RAT polished rock surfaces so instruments could examine fresh material underneath.",
+      "source_id": "pds_mer"
+    },
+    {
+      "text": "Mini-TES identified minerals from a distance using infrared measurements.",
+      "source_id": "pds_mer"
+    },
+    {
+      "text": "APXS measured the chemical composition of rocks and soil.",
+      "source_id": "pds_mer"
+    }
+  ],
+  "dialogue": {
+    "intro_npc_1": "Welcome, R.O.M. Your scanner is online. This mission starts by observing a machine that stayed behind.",
+    "intro_npc_2": "Find Spirit, study the science tools, and rebuild the story from evidence instead of guesses.",
+    "npc_hint": "Look for tools, bright samples, and strange soil. Every object can unlock a part of the story.",
+    "npc_first_hint": "Spirit is north of here. Walk next to it and press A.",
+    "rover_before_npc": "A quiet rover rests in the dust. Maybe Dr. Vega can help you understand it.",
+    "rover_intro": "Spirit (MER-A) launched on June 10, 2003 and landed in Gusev Crater in January 2004.",
+    "rover_after_id": "Correct. Spirit lasted far longer than its planned 90-sol mission.",
+    "rover_waiting": "Spirit is still quiet. You need more clues: tools, samples, and an environmental challenge.",
+    "case_locked": "An orange tool case. First identify the rover so you know what the tools are for.",
+    "case_open": "You found the APXS kit. New skill unlocked: Chemical Analysis.",
+    "case_fact": "The MER archive in PDS includes APXS, Mossbauer, Microscopic Imager, RAT, Mini-TES, Navcam, Pancam, and more mission data.",
+    "dish": "Link antenna: a mission is not only a rover. It is also the network that receives and protects its data.",
+    "soil_locked": "Bright soil. You need a science tool before analyzing it.",
+    "soil_done": "You already recorded this bright soil.",
+    "soil_fact": "Spirit found silica-rich soil near Home Plate. NASA describes it as evidence of an environment shaped by water or steam in Mars' past.",
+    "soil_good": "Good. In the game, that science clue becomes part of the mystery.",
+    "nothing": "Nothing to inspect here. Try people, machines, tools, samples, or bright soil."
+  },
+  "questions": {
+    "mission_length": {
+      "prompt": "Spirit's primary mission was planned to last:",
+      "options": [
+        "9 sols",
+        "90 sols",
+        "900 sols"
+      ],
+      "correct": 1
+    },
+    "silica": {
+      "prompt": "Silica-rich soil can point to:",
+      "options": [
+        "A recent impact",
+        "Hot water or steam in the past",
+        "The rover's shadow"
+      ],
+      "correct": 1
+    },
+    "final": {
+      "prompt": "Rebuild Spirit's final story:",
+      "options": [
+        "A meteor destroyed it",
+        "It got stuck, became a stationary science platform, and could not regain contact as winter reduced available energy",
+        "NASA turned it off to launch another rover"
+      ],
+      "correct": 1
+    }
+  },
+  "final_clues": [
+    {
+      "kind": "game_event",
+      "text": "SIMULATION CLUE: Solar power was dropping as the Martian winter came closer. This recreates the engineering problem; it does not change Spirit's historical ending."
+    },
+    {
+      "kind": "nasa_data",
+      "text": "CLUE #02: NASA reformulated Spirit as a stationary science platform after attempts to move it failed.",
+      "source_id": "nasa_spirit"
+    },
+    {
+      "kind": "nasa_data",
+      "text": "CLUE #03: Spirit did not communicate after March 22, 2010; final contact attempts ended May 25, 2011.",
+      "source_id": "nasa_spirit"
+    }
+  ],
+  "storm": {
+    "start": "Dust event! The sky turns orange and the rover's solar energy drops.",
+    "fact": "NASA reported Spirit stopped communicating as Martian winter approached and solar energy declined.",
+    "success": "SIMULATION COMPLETE: You protected the power budget. In the historical record, Spirit still lost contact as winter approached.",
+    "source_id": "nasa_spirit"
+  },
+  "ending": {
+    "title": "You discovered the story of Spirit.",
+    "codex": "Space Codex: Spirit ✓",
+    "tagline": "They were left behind. Their stories weren't.",
+    "codex_text": "Spirit complete: planned for 90 sols, operated for more than six years, became a stationary science platform after getting stuck, and helped reveal watery, possibly hydrothermal environments on Mars."
+  }
+}

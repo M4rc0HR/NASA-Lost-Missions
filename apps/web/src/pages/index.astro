@@ -1,0 +1,83 @@
+---
+import presentation from "../../../../content/project/presentation.json";
+import { translations, copy, steps } from "../data/home";
+import HomeHeader from "../components/home/HomeHeader.astro";
+import SpaceBackground from "../components/home/SpaceBackground.astro";
+import MissionExplorer from "../components/home/MissionExplorer.astro";
+import HeroObservatory from "../components/home/HeroObservatory.astro";
+import FieldLab from "../components/home/FieldLab.astro";
+import "../styles/home.css";
+---
+
+<!doctype html>
+<html lang="en" class="home-document">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={copy.meta} />
+    <meta name="theme-color" content="#070b12" />
+    <link rel="icon" type="image/png" href="/assets/logo/logo-mision-rom.png" />
+    <link rel="stylesheet" href="/site-theme.css" />
+    <title>{presentation.title} · {copy.archive}</title>
+  </head>
+  <body class="home-page">
+    <a class="skip-link" href="#main" data-i18n="skip">{copy.skip}</a>
+    <SpaceBackground />
+    <HomeHeader />
+
+    <main id="main">
+      <!-- 01 / Invitation: existing art, ambient motion and a clear way into the game. -->
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="kicker"><span class="signal-dot" aria-hidden="true"></span><span data-i18n="heroKicker">{copy.heroKicker}</span></p>
+          <p class="hero-project">NASA: LOST MISSIONS / 001</p>
+          <h1 id="hero-title"><span data-i18n="heroTitle">{copy.heroTitle}</span><em data-i18n="heroAccent">{copy.heroAccent}</em></h1>
+          <p class="hero-description" data-i18n="heroBody">{copy.heroBody}</p>
+          <div class="hero-actions">
+            <a class="explore-button" href="/missions"><span data-i18n="start">{copy.start}</span><span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#explore"><span data-i18n="meetMissions">{copy.meetMissions}</span><span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-preferences">
+            <p class="hero-note" data-i18n="heroNote">{copy.heroNote}</p>
+            <button class="motion-control" type="button" data-space-motion aria-pressed="false" aria-label={copy.motionLabel} data-i18n-aria="motionLabel" hidden><span class="motion-orbit" aria-hidden="true">◌</span><span data-motion-label data-i18n="motionOff">{copy.motionOff}</span></button>
+          </div>
+        </div>
+        <HeroObservatory />
+      </section>
+
+      <!-- 02 / Preview only: entry still goes through the existing mission progression. -->
+      <MissionExplorer />
+
+      <!-- 03 / A short learning path replaces the project pitch. -->
+      <section id="how-to-play" class="how-section section" aria-labelledby="how-title">
+        <div class="wrap">
+          <p class="kicker" data-i18n="howKicker">{copy.howKicker}</p>
+          <h2 id="how-title" data-i18n="howTitle">{copy.howTitle}</h2>
+          <ol class="learning-steps">
+            {steps.map((step, index) => <li><span class="step-number" aria-hidden="true">0{index + 1}</span><div><h3 data-i18n={step.title}>{copy[step.title]}</h3><p data-i18n={step.body}>{copy[step.body]}</p></div></li>)}
+          </ol>
+
+          <FieldLab />
+        </div>
+      </section>
+
+      <!-- 04 / Clearly distinguish the historical record from the fictional framing. -->
+      <section id="challenge" class="science-section wrap section" aria-labelledby="science-title">
+        <div class="science-intro"><p class="kicker" data-i18n="scienceKicker">{copy.scienceKicker}</p><h2 id="science-title" data-i18n="scienceTitle">{copy.scienceTitle}</h2><p data-i18n="scienceIntro">{copy.scienceIntro}</p></div>
+        <div class="science-notes">
+          <article><span class="note-label">NASA DATA</span><h3 data-i18n="dataTitle">{copy.dataTitle}</h3><p data-i18n="dataBody">{copy.dataBody}</p></article>
+          <article><span class="note-label fiction">GAME EVENT</span><h3 data-i18n="fictionTitle">{copy.fictionTitle}</h3><p data-i18n="fictionBody">{copy.fictionBody}</p></article>
+        </div>
+      </section>
+
+      <section class="final-section wrap" aria-labelledby="final-title">
+        <div><p class="kicker" data-i18n="finalKicker">{copy.finalKicker}</p><h2 id="final-title" data-i18n="finalTitle">{copy.finalTitle}</h2><p data-i18n="finalBody">{copy.finalBody}</p></div>
+        <a class="explore-button" href="/missions"><span data-i18n="start">{copy.start}</span><span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+    <footer class="home-footer wrap"><b>NASA: LOST MISSIONS</b><p data-i18n="footer">{copy.footer}</p><a href="#main" aria-label={copy.top} data-i18n-aria="top">↑</a></footer>
+
+    <script id="home-translations" type="application/json" is:inline set:html={JSON.stringify(translations).replace(/</g, "\\u003c")} />
+    <script src="../scripts/home.ts" />
+  </body>
+</html>

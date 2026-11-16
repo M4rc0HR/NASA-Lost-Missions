@@ -1,0 +1,23 @@
+---
+import presentation from "../../../../../content/project/presentation.json";
+import { copy } from "../../data/home";
+import ReadingProgress from "./ReadingProgress.astro";
+---
+
+<header class="header-shell">
+  <div class="home-nav wrap">
+    <a class="home-brand" href="/" aria-label={presentation.title}>
+      <span class="brand-logo" aria-hidden="true"><img src="/assets/logo/logo-mision-rom.png" alt="" width="256" height="256" /></span>
+      <span><b>NASA: LOST MISSIONS</b><small data-i18n="archive">{copy.archive}</small></span>
+    </a>
+    <nav aria-label={copy.navigation} data-i18n-aria="navigation">
+      <a href="#explore" data-i18n="navMissions">{copy.navMissions}</a>
+      <a href="#how-to-play" data-i18n="navHow">{copy.navHow}</a>
+      <a href="#challenge" data-i18n="navScience">{copy.navScience}</a>
+    </nav>
+    <button class="language-control" id="siteLanguage" type="button" aria-label={copy.switchLanguage} data-i18n-aria="switchLanguage" hidden>
+      <span data-lang="en" class="current-language">EN</span><span aria-hidden="true">/</span><span data-lang="es">ES</span>
+    </button>
+  </div>
+  <ReadingProgress />
+</header>

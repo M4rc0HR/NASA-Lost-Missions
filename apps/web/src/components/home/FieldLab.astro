@@ -1,0 +1,39 @@
+---
+import { copy, instruments, instrumentFact } from "../../data/home";
+---
+
+<div class="field-lab" id="fieldLab" aria-labelledby="lab-title">
+  <div class="lab-briefing">
+    <span class="note-label fiction">ARCHIVE SIMULATION</span>
+    <p class="kicker" data-i18n="labKicker">{copy.labKicker}</p>
+    <h3 id="lab-title" data-i18n="labTitle">{copy.labTitle}</h3>
+    <p data-i18n="labIntro">{copy.labIntro}</p>
+    <div class="sample-illustration" aria-hidden="true"><span class="sample-orbit"></span><span class="rock-sample"></span><span class="sample-marker">+</span></div>
+  </div>
+  <div class="lab-investigation">
+    <p class="lab-question" id="lab-question" data-i18n="labQuestion">{copy.labQuestion}</p>
+    <div class="instrument-choices" role="group" aria-labelledby="lab-question" hidden>
+      {instruments.map((instrument) => (
+        <button class="instrument-choice" type="button" data-instrument={instrument.id} data-feedback={instrument.feedback} aria-pressed="false" aria-describedby={`hint-${instrument.id}`}>
+          <span class={`instrument-icon icon-${instrument.icon}`} aria-hidden="true">
+            {instrument.icon === "camera" ? <svg viewBox="0 0 32 32" fill="none"><path d="M4 10h7l2-4h7l2 4h6v17H4z" /><circle cx="16" cy="18" r="5" /><path d="M24 14h1" /></svg> : instrument.icon === "spectrum" ? <svg viewBox="0 0 32 32" fill="none"><path d="M4 27h24M6 23V13m5 10V6m5 17V10m5 13V4m5 19V15" /><circle cx="6" cy="7" r="2" /></svg> : <svg viewBox="0 0 32 32" fill="none"><path d="M7 9h18l4 15H3zM16 9v15M5 16h22M16 24v5m-5 0h10M16 1v3M5 3l2 2m20-2-2 2" /></svg>}
+          </span>
+          <b data-i18n={instrument.title}>{copy[instrument.title]}</b>
+          <small id={`hint-${instrument.id}`} data-i18n={instrument.hint}>{copy[instrument.hint]}</small>
+          <span class="choice-indicator" aria-hidden="true">↗</span>
+        </button>
+      ))}
+    </div>
+    <div class="lab-feedback" role="status" aria-live="polite" aria-atomic="true" hidden>
+      <img id="labRom" src="/assets/rom/poses/thinking.png" alt="R.O.M." width="64" height="64" loading="lazy" />
+      <p id="labFeedback" data-i18n="labReady">{copy.labReady}</p>
+    </div>
+    <div class="field-note" id="fieldNote" data-kind={instrumentFact.kind} data-source-id={instrumentFact.source_id}>
+      <span class="note-label">NASA DATA</span>
+      <h4 data-i18n="labDiscovery">{copy.labDiscovery}</h4>
+      <p data-i18n="labFact">{copy.labFact}</p>
+      <a class="source-link" href={instrumentFact.source} target="_blank" rel="noopener noreferrer" data-i18n-aria="labSourceLabel" aria-label={copy.labSourceLabel}><span data-i18n="labSource">{copy.labSource}</span><span aria-hidden="true">↗</span></a>
+    </div>
+    <button class="lab-reset" id="resetLab" type="button" hidden><span aria-hidden="true">↺</span><span data-i18n="labReset">{copy.labReset}</span></button>
+  </div>
+</div>

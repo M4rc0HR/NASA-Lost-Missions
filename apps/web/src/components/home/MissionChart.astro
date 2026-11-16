@@ -1,0 +1,21 @@
+---
+import { copy } from "../../data/home";
+---
+
+<details class="navigation-chart">
+  <summary><span class="chart-symbol" aria-hidden="true">⌖</span><span data-i18n="chartTitle">{copy.chartTitle}</span><span class="chart-toggle" aria-hidden="true">+</span></summary>
+  <div class="chart-layout">
+    <figure class="map-window">
+      <div class="window-heading"><span class="window-lights" aria-hidden="true"><i></i><i></i><i></i></span><span data-i18n="mapTitle">{copy.mapTitle}</span><span aria-hidden="true">↗</span></div>
+      <div class="map-image">
+        <img src="/assets/mission-map-pixel.png" width="1672" height="941" alt={copy.mapAlt} data-i18n-alt="mapAlt" loading="lazy" decoding="async" fetchpriority="low" />
+        <span class="scan-line" aria-hidden="true"></span>
+        <a class="map-pin pin-mars" href="#explore" data-destination="spirit" aria-label={copy.marsSignal} data-i18n-aria="marsSignal"><span class="pin-core" aria-hidden="true"></span><span class="pin-label" data-i18n="mars">{copy.mars}</span><span class="pin-arrow" aria-hidden="true">↗</span></a>
+        <a class="map-pin pin-moon" href="#explore" data-destination="apollo" aria-label={copy.moonSignal} data-i18n-aria="moonSignal"><span class="pin-core" aria-hidden="true"></span><span class="pin-label" data-i18n="moon">{copy.moon}</span><span class="pin-arrow" aria-hidden="true">↗</span></a>
+      </div>
+      <figcaption><b data-i18n="scope">{copy.scope}</b><span data-i18n="mapCaption">{copy.mapCaption}</span></figcaption>
+      <p class="map-hint"><span aria-hidden="true">↳</span><span data-i18n="mapHint">{copy.mapHint}</span></p>
+    </figure>
+    <div class="chart-context"><span class="note-label fiction">GAME EVENT</span><h3 data-i18n="mapTitle">{copy.mapTitle}</h3><p data-i18n="chartDescription">{copy.chartDescription}</p><a class="text-link" href="/missions"><span data-i18n="mapAction">{copy.mapAction}</span><span aria-hidden="true">↗</span></a></div>
+  </div>
+</details>

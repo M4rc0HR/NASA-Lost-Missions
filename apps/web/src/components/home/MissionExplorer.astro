@@ -1,0 +1,49 @@
+---
+import { copy, missions } from "../../data/home";
+import MissionChart from "./MissionChart.astro";
+---
+
+<section id="explore" class="explorer-section wrap section" aria-labelledby="explorer-title">
+  <div class="section-intro">
+    <div><p class="kicker" data-i18n="explorerKicker">{copy.explorerKicker}</p><h2 id="explorer-title" data-i18n="explorerTitle">{copy.explorerTitle}</h2></div>
+    <p data-i18n="explorerBody">{copy.explorerBody}</p>
+  </div>
+  <MissionChart />
+  <div class="mission-console">
+    <div class="mission-tabs" role="tablist" aria-label={copy.missionSelector} data-i18n-aria="missionSelector" hidden>
+      {missions.map((mission, index) => (
+        <button id={`tab-${mission.id}`} type="button" role="tab" aria-controls={`preview-${mission.id}`} aria-selected={index === 0 ? "true" : "false"} tabindex={index === 0 ? 0 : -1} data-mission={mission.id}>
+          <span class="tab-number" aria-hidden="true">0{index + 1}</span><span>{mission.name}</span><span class="tab-world" data-i18n={mission.world}>{copy[mission.world]}</span>
+        </button>
+      ))}
+    </div>
+    <div class="mission-previews">
+      {missions.map((mission) => (
+        <article class={`mission-preview ${mission.id}`} id={`preview-${mission.id}`} data-preview={mission.id} data-world={mission.world} data-kind="nasa_data" data-source-id={mission.sourceId}>
+          <figure class="planet-scene">
+            <div class="planet-drawing" aria-hidden="true">
+              <img class="planet-image" src={mission.world === "moon" ? "/assets/home/moon.jpg" : "/assets/home/mars.jpg"} alt="" loading="lazy" decoding="async" />
+            </div>
+            <figcaption><b data-i18n={mission.world}>{copy[mission.world]}</b><span data-i18n="illustration">{copy.illustration}</span></figcaption>
+          </figure>
+          <div class="preview-copy">
+            <p class="kicker" data-i18n="preview">{copy.preview}</p>
+            <p class="mission-location" data-i18n={mission.place}>{copy[mission.place]}</p>
+            <h3>{mission.name}</h3>
+            <p class="mission-question" data-i18n={mission.question}>{copy[mission.question]}</p>
+            <p class="mission-description" data-i18n={mission.body}>{copy[mission.body]}</p>
+            <p class="mission-order"><span aria-hidden="true">↳</span><span data-i18n={mission.order}>{copy[mission.order]}</span></p>
+            <div class="archive-records">
+              <details><summary><span data-i18n="inspectHardware">{copy.inspectHardware}</span><span class="disclosure-icon" aria-hidden="true">+</span></summary><p data-i18n={mission.hardware}>{copy[mission.hardware]}</p></details>
+              <details><summary><span data-i18n="inspectLegacy">{copy.inspectLegacy}</span><span class="disclosure-icon" aria-hidden="true">+</span></summary><p data-i18n={mission.legacy}>{copy[mission.legacy]}</p></details>
+            </div>
+            <div class="mission-links">
+              <a class="mission-map-link" href="/missions"><span data-i18n="mapAction">{copy.mapAction}</span><span aria-hidden="true">↗</span></a>
+              <a class="source-link" href={mission.source} target="_blank" rel="noopener noreferrer" aria-label={copy.newTab} data-i18n-aria="newTab"><span data-i18n="source">{copy.source}</span><span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

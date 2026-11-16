@@ -1,0 +1,260 @@
+---
+// A small, deterministic fallback remains visible without JavaScript or canvas.
+const fallbackStars = Array.from({ length: 38 }, (_, index) => ({
+  x: ((index * 47.71 + 8.3) % 100).toFixed(2),
+  y: ((index * 31.37 + 4.6) % 100).toFixed(2),
+  size: index % 7 === 0 ? 2 : 1,
+  opacity: (0.22 + (index % 5) * 0.12).toFixed(2)
+}));
+---
+
+<div class="space-background" data-space-background aria-hidden="true">
+  <div class="space-nebula nebula-blue"></div>
+  <div class="space-nebula nebula-indigo"></div>
+  <div class="space-horizon"></div>
+  <div class="fallback-stars">
+    {fallbackStars.map((star) => <span style={`left:${star.x}%;top:${star.y}%;width:${star.size}px;height:${star.size}px;opacity:${star.opacity}`}></span>)}
+  </div>
+  <canvas class="space-stars" data-space-stars></canvas>
+  <!-- Decorative worlds: procedural artwork, not NASA imagery or a scale model. -->
+  <div class="distant-world">
+    <svg viewBox="0 0 200 200" fill="none" focusable="false">
+      <defs>
+        <radialGradient id="backdrop-distant-light" cx="0" cy="0" r="1" gradientTransform="translate(59 48) rotate(47) scale(152)">
+          <stop stop-color="#b58e77" /><stop offset=".4" stop-color="#765c51" /><stop offset=".76" stop-color="#282330" /><stop offset="1" stop-color="#050b17" />
+        </radialGradient>
+        <clipPath id="backdrop-distant-disc"><circle cx="100" cy="100" r="84" /></clipPath>
+      </defs>
+      <g clip-path="url(#backdrop-distant-disc)">
+        <circle cx="100" cy="100" r="84" fill="url(#backdrop-distant-light)" />
+        <path d="M18 75c32 13 49-26 78-15s34 43 76 24M27 124c24-14 40 1 55 10s28-4 42-3" stroke="#b1a193" stroke-width="9" opacity=".16" />
+        <ellipse cx="64" cy="74" rx="15" ry="10" stroke="#e4c4a5" stroke-width="2" opacity=".2" />
+        <ellipse cx="95" cy="117" rx="23" ry="16" fill="#1d2029" opacity=".2" />
+        <path d="M123 12c-3 38 15 54 7 88s-5 56 21 86" stroke="#030915" stroke-width="39" opacity=".64" />
+      </g>
+      <circle cx="100" cy="100" r="84" stroke="#acbbcb" stroke-opacity=".16" />
+    </svg>
+  </div>
+  <div class="planetary-vista">
+    <svg viewBox="0 0 800 800" fill="none" focusable="false">
+      <defs>
+        <radialGradient id="backdrop-ocean-light" cx="0" cy="0" r="1" gradientTransform="translate(220 169) rotate(48) scale(626)">
+          <stop stop-color="#5c91af" /><stop offset=".23" stop-color="#326586" /><stop offset=".55" stop-color="#15364f" /><stop offset="1" stop-color="#030914" />
+        </radialGradient>
+        <radialGradient id="backdrop-night" cx="0" cy="0" r="1" gradientTransform="translate(162 174) rotate(49) scale(660)">
+          <stop offset=".28" stop-color="#030914" stop-opacity="0" /><stop offset=".57" stop-color="#030914" stop-opacity=".42" /><stop offset=".78" stop-color="#030914" stop-opacity=".94" /><stop offset="1" stop-color="#030914" />
+        </radialGradient>
+        <linearGradient id="backdrop-atmosphere" x1="137" y1="108" x2="653" y2="650" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#b7e5ff" stop-opacity=".8" /><stop offset=".44" stop-color="#619ac7" stop-opacity=".16" /><stop offset="1" stop-color="#19354d" stop-opacity="0" />
+        </linearGradient>
+        <clipPath id="backdrop-ocean-disc"><circle cx="400" cy="400" r="343" /></clipPath>
+      </defs>
+      <circle cx="400" cy="400" r="350" stroke="url(#backdrop-atmosphere)" stroke-width="5" opacity=".28" />
+      <g clip-path="url(#backdrop-ocean-disc)">
+        <circle cx="400" cy="400" r="343" fill="url(#backdrop-ocean-light)" />
+        <path d="m112 214 52-17 18 23 48-12 31 18 8 32 33 13 7 35-26 34-35 7-9 35-30 15-15-19-27 1-20-32-32-19-5-40-35-24zM341 110l43 14 11 32 39 11 7 34 28 26-9 27-38 8-12 32-39-8-11-41-26-13-14-34 17-30-7-33zM302 417l35-24 42 20 19 42 26 26-11 48-39 33-14 50-29 16-21-37 9-58-23-37-9-46zM507 319l43-13 20 16 36-14 37 21-9 34-30 24-4 42-40-1-34-39-38-6z" fill="#7e9b8d" opacity=".34" />
+        <path d="M68 314c90-82 144-50 229-72s118-26 190 18M110 391c68-34 134-25 172-6s81 22 136 5M261 146c77-21 136-6 168 14M385 530c62-28 105-20 137-4s62 15 95 2" stroke="#d1dfdf" stroke-width="15" stroke-linecap="round" opacity=".2" />
+        <path d="M83 331c87-52 144-36 205-48M199 463c40-13 67-7 92 7M372 340c61-35 134-31 173-11" stroke="#d6e6e9" stroke-width="5" stroke-linecap="round" opacity=".2" />
+        <circle cx="400" cy="400" r="343" fill="url(#backdrop-night)" />
+      </g>
+      <circle cx="400" cy="400" r="344" stroke="url(#backdrop-atmosphere)" stroke-width="2" />
+    </svg>
+  </div>
+  <div class="space-vignette"></div>
+</div>
+
+<script>
+  const background = document.querySelector<HTMLElement>("[data-space-background]");
+  const canvas = background?.querySelector<HTMLCanvasElement>("[data-space-stars]");
+  const context = canvas?.getContext("2d", { alpha: true });
+
+  if (background && canvas && context) {
+    const element = background;
+    const surface = canvas;
+    const ctx = context;
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const pointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const motionButton = document.querySelector<HTMLButtonElement>("[data-space-motion]");
+    const label = motionButton?.querySelector<HTMLElement>("[data-motion-label]");
+    const controller = new AbortController();
+    const { signal } = controller;
+    let userPaused = false;
+    let reducedOverride = false;
+    let width = 0;
+    let height = 0;
+    let frame = 0;
+    let resizeFrame = 0;
+    let lastDraw = 0;
+    let elapsed = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let offsetX = 0;
+    let offsetY = 0;
+    let resizePending = false;
+
+    type Star = { x: number; y: number; radius: number; depth: number; phase: number; opacity: number; color: string; sparkle: boolean };
+    let stars: Star[] = [];
+    const animated = () => !userPaused && (!motionQuery.matches || reducedOverride);
+
+    function createStars() {
+      // Seeded positions prevent the sky from jumping after a resize or pause.
+      let seed = 1729;
+      const random = () => {
+        seed = (seed * 16807) % 2147483647;
+        return (seed - 1) / 2147483646;
+      };
+      const count = Math.min(width < 700 ? 70 : 160, Math.max(38, Math.round(width * height / 8000)));
+      stars = Array.from({ length: count }, () => {
+        const depth = 0.2 + random() * 0.8;
+        return {
+          x: random(), y: random(), radius: 0.35 + depth * 0.9,
+          depth, phase: random() * Math.PI * 2,
+          opacity: 0.22 + random() * 0.5,
+          color: random() > 0.18 ? "190,218,246" : "246,222,192",
+          sparkle: random() > 0.96
+        };
+      });
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, width, height);
+      for (const star of stars) {
+        const x = star.x * (width + 32) - 16 + offsetX * star.depth + Math.sin(elapsed * 0.025 + star.phase) * 2;
+        const y = star.y * (height + 32) - 16 + offsetY * star.depth;
+        const opacity = star.opacity * (0.88 + Math.sin(elapsed * 0.35 + star.phase) * 0.12);
+        ctx.fillStyle = `rgba(${star.color},${opacity})`;
+        ctx.beginPath();
+        ctx.arc(x, y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+        if (star.sparkle) {
+          ctx.strokeStyle = `rgba(${star.color},${opacity * 0.4})`;
+          ctx.lineWidth = 0.6;
+          ctx.beginPath();
+          ctx.moveTo(x - 3, y); ctx.lineTo(x + 3, y);
+          ctx.moveTo(x, y - 3); ctx.lineTo(x, y + 3);
+          ctx.stroke();
+        }
+      }
+      element.style.setProperty("--space-offset-x", `${offsetX * 0.6}px`);
+      element.style.setProperty("--space-offset-y", `${offsetY * 0.6}px`);
+    }
+
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      // A capped backing resolution avoids expensive mobile canvases.
+      const ratio = Math.min(window.devicePixelRatio || 1, width < 700 ? 1.5 : 2);
+      surface.width = Math.round(width * ratio);
+      surface.height = Math.round(height * ratio);
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      createStars();
+      render();
+      element.dataset.rendered = "true";
+      resizePending = false;
+    }
+
+    function tick(now: number) {
+      frame = 0;
+      if (!animated() || document.hidden || signal.aborted) return;
+      // Render at most 30 times a second, with a bounded delta after resume.
+      if (!lastDraw || now - lastDraw >= 1000 / 30) {
+        if (lastDraw) elapsed += Math.min((now - lastDraw) / 1000, 0.1);
+        lastDraw = now;
+        offsetX += (targetX - offsetX) * 0.07;
+        offsetY += (targetY - offsetY) * 0.07;
+        render();
+      }
+      frame = window.requestAnimationFrame(tick);
+    }
+
+    function stop() {
+      window.cancelAnimationFrame(frame);
+      frame = 0;
+      lastDraw = 0;
+    }
+
+    function synchronize() {
+      stop();
+      const active = animated();
+      if (motionButton) {
+        motionButton.hidden = false;
+        motionButton.setAttribute("aria-pressed", String(active));
+      }
+      if (label) label.dataset.i18n = active ? "motionOn" : "motionOff";
+      window.dispatchEvent(new CustomEvent("space-motion-change", { detail: { paused: !active, reduced: motionQuery.matches } }));
+      if (!active) {
+        targetX = targetY = offsetX = offsetY = 0;
+        if (!document.hidden) render();
+      }
+      if (active && !document.hidden) frame = window.requestAnimationFrame(tick);
+    }
+
+    motionButton?.addEventListener("click", () => {
+      if (animated()) {
+        userPaused = true;
+        reducedOverride = false;
+      } else {
+        userPaused = false;
+        reducedOverride = motionQuery.matches;
+      }
+      synchronize();
+    }, { signal });
+    motionQuery.addEventListener("change", () => {
+      reducedOverride = false;
+      synchronize();
+    }, { signal });
+    window.addEventListener("pointermove", (event) => {
+      if (!animated() || !pointerQuery.matches || document.hidden) return;
+      targetX = (event.clientX / Math.max(width, 1) - 0.5) * 14;
+      targetY = (event.clientY / Math.max(height, 1) - 0.5) * 10;
+    }, { passive: true, signal });
+    document.documentElement.addEventListener("pointerleave", () => { targetX = targetY = 0; }, { signal });
+    window.addEventListener("resize", () => {
+      resizePending = true;
+      if (document.hidden || resizeFrame) return;
+      resizeFrame = window.requestAnimationFrame(() => { resizeFrame = 0; resize(); });
+    }, { passive: true, signal });
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        stop();
+        window.cancelAnimationFrame(resizeFrame);
+        resizeFrame = 0;
+      } else {
+        if (resizePending) resize();
+        synchronize();
+      }
+    }, { signal });
+    window.addEventListener("pagehide", stop, { signal });
+    window.addEventListener("pageshow", synchronize, { signal });
+    document.addEventListener("astro:before-swap", () => {
+      stop();
+      window.cancelAnimationFrame(resizeFrame);
+      controller.abort();
+    }, { once: true, signal });
+
+    resize();
+    synchronize();
+  }
+</script>
+
+<style>
+  .space-background { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: #040914; contain: strict; }
+  .space-nebula { position: absolute; inset: -12%; transform: translate3d(var(--space-offset-x, 0px), var(--space-offset-y, 0px), 0); }
+  .nebula-blue { background: radial-gradient(ellipse at 83% 18%, #143e6259 0%, #112a4540 19%, transparent 48%), radial-gradient(ellipse at 12% 73%, #17395440 0%, transparent 41%); }
+  .nebula-indigo { background: radial-gradient(ellipse at 70% 66%, #31255735 0%, transparent 35%), radial-gradient(ellipse at 23% 12%, #19265729 0%, transparent 36%); }
+  .space-horizon { position: absolute; width: 130%; height: 90%; left: -15%; top: 20%; border-radius: 50%; background: radial-gradient(ellipse at center, transparent 35%, #18334e15 52%, transparent 66%); transform: rotate(-28deg); }
+  .space-stars, .fallback-stars { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .fallback-stars span { position: absolute; border-radius: 50%; background: #c6e1ff; }
+  [data-rendered="true"] .fallback-stars { display: none; }
+  .distant-world { position: absolute; left: -66px; top: 17%; width: clamp(112px, 12vw, 174px); opacity: .25; transform: translate3d(var(--space-offset-x, 0px), var(--space-offset-y, 0px), 0) rotate(-19deg); }
+  .planetary-vista { position: absolute; width: clamp(620px, 66vw, 1080px); aspect-ratio: 1; right: -18%; bottom: -42vh; opacity: .57; transform: translate3d(calc(var(--space-offset-x, 0px) * -.65), calc(var(--space-offset-y, 0px) * -.65), 0) rotate(-16deg); }
+  .planetary-vista::before { content: ""; position: absolute; inset: 6%; border-radius: 50%; box-shadow: -18px -13px 60px #376e9d15; }
+  .distant-world svg, .planetary-vista svg { display: block; width: 100%; height: 100%; }
+  .space-vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 42%, transparent 30%, #02050b5c 100%); }
+  @media (max-width: 700px) {
+    .nebula-blue { background: radial-gradient(ellipse at 90% 18%, #143e6259 0%, transparent 60%), radial-gradient(ellipse at 0% 78%, #17395435 0%, transparent 40%); }
+    .nebula-indigo { opacity: .7; }
+    .distant-world { left: -58px; top: 25%; width: 115px; opacity: .19; }
+    .planetary-vista { width: min(112vw, 650px); right: -57%; bottom: -15%; opacity: .43; }
+  }
+</style>

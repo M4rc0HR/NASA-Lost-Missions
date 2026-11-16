@@ -1,0 +1,80 @@
+---
+import { copy } from "../../data/home";
+---
+
+<figure class="hero-observatory" data-observatory data-world="mars" aria-labelledby="observatory-title">
+  <div class="observatory-header">
+    <div><p class="observatory-eyebrow" data-i18n="sceneEyebrow">{copy.sceneEyebrow}</p><h2 id="observatory-title" data-i18n="sceneTitle">{copy.sceneTitle}</h2></div>
+    <div class="scene-world-switch" role="group" aria-label={copy.sceneViewLabel} data-i18n-aria="sceneViewLabel">
+      <button type="button" data-scene-world="mars" aria-pressed="true" data-i18n="sceneMars" disabled>{copy.sceneMars}</button>
+      <button type="button" data-scene-world="moon" aria-pressed="false" data-i18n="sceneMoon" disabled>{copy.sceneMoon}</button>
+    </div>
+  </div>
+
+  <div class="observatory-window">
+    <img class="world-photo" data-world-photo="mars" src="/assets/home/mars_2.jpg" alt="" loading="lazy" decoding="async" />
+    <img class="world-photo" data-world-photo="moon" src="/assets/home/moon_2.jpg" alt="" loading="lazy" decoding="async" />
+    <p class="scene-destination" data-scene-location data-i18n="sceneMars">{copy.sceneMars}</p>
+
+    <button class="rom-scanner" type="button" data-rom-scan aria-expanded="false" aria-controls="sceneDiscoveries" aria-label={copy.sceneScan} data-i18n-aria="sceneScan" disabled>
+      <span class="rom-contact-shadow" aria-hidden="true"></span>
+      <span class="rom-scan-light" aria-hidden="true"></span>
+      <img src="/assets/rom/poses/greeting.png" alt={copy.sceneRomAlt} data-i18n-alt="sceneRomAlt" data-scene-rom width="256" height="256" fetchpriority="high" />
+      <span class="rom-nameplate"><span class="rom-status-dot" aria-hidden="true"></span>R.O.M.<span aria-hidden="true">+</span></span>
+    </button>
+  </div>
+
+  <div class="observatory-console">
+    <div class="scene-message"><span class="scene-message-icon" aria-hidden="true">↳</span><p data-scene-status data-i18n="sceneReady" role="status" aria-live="polite">{copy.sceneReady}</p></div>
+    <div class="scene-discoveries" id="sceneDiscoveries" hidden>
+      <a href="#fieldLab"><span class="discovery-mark" aria-hidden="true">◇</span><span data-i18n="sceneRock">{copy.sceneRock}</span><span aria-hidden="true">↗</span></a>
+      <a href="#explore"><span class="discovery-mark" aria-hidden="true">⌁</span><span data-i18n="sceneArchive">{copy.sceneArchive}</span><span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+  <figcaption class="observatory-caption"><span>GAME EVENT</span><span data-i18n="sceneCaption">{copy.sceneCaption}</span></figcaption>
+</figure>
+
+<style>
+  .hero-observatory { --surface-light: #ad7758; --surface-mid: #754d39; --surface-dark: #302a2a; --horizon-glow: #d491635c; margin: 0; min-width: 0; border: 1px solid #3c586c; background: #091421; box-shadow: 14px 16px 45px #0005, 0 0 65px #35617c0d; }
+  .hero-observatory[data-world="moon"] { --surface-light: #b0b7ba; --surface-mid: #747f88; --surface-dark: #303b47; --horizon-glow: #83c9ed4d; }
+  .observatory-header { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 19px 20px; border-bottom: 1px solid #294256; background: #0e1c2b; }
+  .observatory-eyebrow { margin: 0 0 6px; color: #80cde5; font: 700 .59rem/1.5 "Courier New", monospace; letter-spacing: .1em; text-transform: uppercase; }
+  .observatory-header h2 { margin: 0; color: #e6f1f9; font: 700 1.02rem/1.4 Arial, sans-serif; letter-spacing: -.015em; }
+  .scene-world-switch { display: inline-flex; flex-shrink: 0; gap: 3px; padding: 3px; border: 1px solid #2d4b60; background: #07111e; }
+  .scene-world-switch button { display: grid; place-items: center; min-height: 44px; min-width: 59px; padding: 8px 10px; border: 1px solid transparent; background: transparent; color: #a7bfd1; font: .68rem "Courier New", monospace; cursor: pointer; }
+  .scene-world-switch button[aria-pressed="true"] { border-color: #a27752; background: #3a2c25; color: #ffd1a4; }
+  [data-world="moon"] .scene-world-switch button[aria-pressed="true"] { border-color: #628da7; background: #1b3549; color: #c8edff; }
+  .scene-world-switch button:hover { background: #173147; color: #fff; }
+  .observatory-window { position: relative; height: clamp(340px, 29vw, 405px); overflow: hidden; isolation: isolate; background: #040d1b; }
+  .world-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-observatory[data-world="mars"] .world-photo[data-world-photo="moon"],
+  .hero-observatory[data-world="moon"] .world-photo[data-world-photo="mars"] { display: none; }
+  .scene-destination { position: absolute; z-index: 2; left: 20px; top: 19px; margin: 0; padding: 5px 9px; border-left: 2px solid #f2ba8c; background: #07121e99; color: #d9e8f2; font: .62rem/1.5 "Courier New", monospace; letter-spacing: .06em; }
+  .rom-scanner { position: absolute; z-index: 3; left: 14%; bottom: 44px; width: 178px; height: 198px; padding: 0; border: 0; background: transparent; color: #ecf8ff; cursor: pointer; }
+  .rom-scanner img { position: absolute; left: 0; bottom: -12px; width: 178px; height: 178px; object-fit: contain; image-rendering: pixelated; filter: drop-shadow(6px 3px 4px #090c1266); }
+  .rom-contact-shadow { position: absolute; bottom: -2px; left: 23px; width: 133px; height: 13px; border-radius: 50%; background: #05090ddd; filter: blur(3px); transform: skewX(-25deg); }
+  .rom-nameplate { position: absolute; left: 8px; top: -11px; display: flex; align-items: center; gap: 9px; padding: 7px 10px; border: 1px solid #61a3bd80; background: #081c2bdd; color: #b8e6f7; font: 700 .62rem/1.3 "Courier New", monospace; letter-spacing: .08em; white-space: nowrap; }
+  .rom-nameplate > span:last-child { padding-left: 8px; color: #ffc58f; font-size: .8rem; }
+  .rom-status-dot { width: 4px; height: 4px; background: #7ddeae; box-shadow: 0 0 8px #7ddeae77; }
+  .rom-scanner:hover .rom-nameplate, .rom-scanner[aria-expanded="true"] .rom-nameplate { border-color: #a8eaff; color: #e3faff; background: #11344a; }
+  .rom-scanner:focus-visible { outline: 2px solid #b2edff; outline-offset: 7px; }
+  .rom-scan-light { position: absolute; z-index: -1; left: 81%; bottom: 2px; width: 175px; height: 135px; background: linear-gradient(135deg, #71e6ec00, #71e6ec28); clip-path: polygon(0 0, 100% 79%, 72% 100%); opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+  .rom-scanner[aria-expanded="true"] .rom-scan-light { opacity: 1; }
+  .observatory-console { min-height: 125px; padding: 17px 20px; border-top: 1px solid #3a4d5f; background: #0a1726; }
+  .scene-message { display: flex; align-items: start; gap: 10px; }
+  .scene-message-icon { color: #83e0ed; font: .8rem/1.6 "Courier New", monospace; }
+  .scene-message p { margin: 0; color: #b9d0df; font: .75rem/1.6 Arial, sans-serif; }
+  .scene-discoveries { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 13px; }
+  .scene-discoveries[hidden] { display: none; }
+  .scene-discoveries a { display: flex; align-items: center; gap: 9px; min-height: 44px; padding: 9px 11px; border: 1px solid #396177; background: #10283a; color: #e0f3ff; font: .69rem/1.4 Arial, sans-serif; text-decoration: none; }
+  .scene-discoveries a > span:last-child { margin-left: auto; color: #8bdff4; }
+  .scene-discoveries a:hover { background: #173a4f; border-color: #85d5ef; }
+  .discovery-mark { color: #ffbc84; font: 1rem "Courier New", monospace; }
+  .observatory-caption { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding: 11px 20px; border-top: 1px solid #24384b; background: #08111e; }
+  .observatory-caption > span:first-child { color: #ffbd86; font: .54rem/1.5 "Courier New", monospace; letter-spacing: .08em; }
+  .observatory-caption > span:last-child { color: #819aaf; font: .56rem/1.5 "Courier New", monospace; }
+  @media (max-width: 1050px) { .observatory-header { gap: 12px; padding-inline: 16px; } .observatory-eyebrow { font-size: .54rem; } .observatory-header h2 { font-size: .9rem; } .scene-world-switch button { min-width: 50px; padding-inline: 8px; } .rom-scanner { left: 10%; } }
+  @media (max-width: 760px) { .observatory-window { height: 360px; } .rom-scanner { left: 15%; } }
+  @media (max-width: 450px) { .observatory-header { flex-wrap: wrap; gap: 12px; padding: 16px; } .observatory-header > div:first-child { flex: 1 1 120px; } .scene-world-switch { margin-left: auto; } .scene-world-switch button { min-width: 48px; } .observatory-eyebrow { font-size: .5rem; } .observatory-header h2 { font-size: .84rem; } .observatory-window { height: 330px; } .rom-scanner { left: 8%; bottom: 39px; width: 158px; height: 178px; } .rom-scanner img { width: 158px; height: 158px; } .rom-contact-shadow { width: 118px; left: 21px; } .observatory-console { padding-inline: 16px; min-height: 140px; } .scene-discoveries { grid-template-columns: 1fr; } .observatory-caption { padding-inline: 16px; } }
+  @media (prefers-reduced-motion: reduce) { .rom-scan-light { transition: none; } }
+</style>

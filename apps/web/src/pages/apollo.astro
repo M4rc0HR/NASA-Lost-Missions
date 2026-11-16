@@ -1,0 +1,58 @@
+---
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Apollo 15 mission coming soon to NASA: Lost Missions." />
+    <link rel="stylesheet" href="/site-theme.css" />
+    <title>Apollo 15 · Coming Soon · NASA: Lost Missions</title>
+  </head>
+  <body class="apollo-page">
+    <main class="apollo-shell">
+      <header class="apollo-topbar">
+        <a class="brand" href="/missions">NASA: LOST MISSIONS</a>
+        <span class="archive-label" id="archiveLabel">MOON ARCHIVE / APOLLO 15</span>
+        <div class="language-switch" id="langSwitch" role="group" aria-label="Language"><button class="lang active" data-lang="en" type="button">EN</button><button class="lang" data-lang="es" type="button">ES</button></div>
+      </header>
+      <section class="apollo-hero" style="grid-template-columns:1fr;max-width:760px">
+        <div>
+          <span class="eyebrow" id="soonEyebrow">MOON · HADLEY-APENNINE</span>
+          <h1 id="soonTitle">Apollo 15: Coming soon</h1>
+          <p class="lead" id="soonLead">This mission is not developed yet. It will tell the story of the hardware Apollo 15 left behind on the Moon, including the Lunar Roving Vehicle and surface science experiments.</p>
+          <p class="fact-note" id="soonNote"><b>NASA DATA</b> · When this mission is published, every historical fact will be clearly sourced.</p>
+          <div class="apollo-actions" style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+            <a class="button primary" id="soonBack" href="/missions">Return to mission map →</a>
+            <a class="button secondary" id="soonMars" href="/story">Play Mars missions</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script is:inline>
+      const copy = {
+        en: { archive: 'MOON ARCHIVE / APOLLO 15', eyebrow: 'MOON · HADLEY-APENNINE', title: 'Apollo 15: Coming soon', lead: 'This mission is not developed yet. It will tell the story of the hardware Apollo 15 left behind on the Moon, including the Lunar Roving Vehicle and surface science experiments.', note: '<b>NASA DATA</b> · When this mission is published, every historical fact will be clearly sourced.', back: 'Return to mission map →', mars: 'Play Mars missions', langLabel: 'Language' },
+        es: { archive: 'ARCHIVO LUNAR / APOLLO 15', eyebrow: 'LUNA · HADLEY-APENNINE', title: 'Apollo 15: Próximamente', lead: 'Esta misión aún no está desarrollada. Contará la historia del equipo que Apollo 15 dejó en la Luna, incluido el vehículo lunar y los experimentos científicos de superficie.', note: '<b>DATOS NASA</b> · Cuando se publique esta misión, cada dato histórico tendrá una fuente clara.', back: 'Volver al mapa de misiones →', mars: 'Jugar misiones de Marte', langLabel: 'Idioma' }
+      };
+      let lang = localStorage.getItem('lost-missions.language') || 'en';
+      function apply() {
+        document.documentElement.lang = lang;
+        const c = copy[lang];
+        document.querySelector('#archiveLabel').textContent = c.archive;
+        document.querySelector('#soonEyebrow').textContent = c.eyebrow;
+        document.querySelector('#soonTitle').textContent = c.title;
+        document.querySelector('#soonLead').textContent = c.lead;
+        document.querySelector('#soonNote').innerHTML = c.note;
+        document.querySelector('#soonBack').textContent = c.back;
+        document.querySelector('#soonMars').textContent = c.mars;
+        document.querySelector('#langSwitch').setAttribute('aria-label', c.langLabel);
+        document.querySelectorAll('.lang').forEach((b) => b.classList.toggle('active', b.dataset.lang === lang));
+      }
+      document.querySelectorAll('.lang').forEach((b) => b.addEventListener('click', () => { lang = b.dataset.lang; localStorage.setItem('lost-missions.language', lang); apply(); }));
+      apply();
+    </script>
+  </body>
+</html>
+<style>
+  .apollo-page{margin:0;background:radial-gradient(circle at 78% 10%,#26394b 0,transparent 28rem),#070a11;color:#edf6ff;font-family:Inter,ui-sans-serif,system-ui,sans-serif}.apollo-shell{max-width:1180px;margin:auto;padding:18px 24px 40px}.apollo-topbar{display:flex;align-items:center;gap:18px;border-bottom:1px solid #30465e;padding-bottom:15px;font-family:"Courier New",monospace;font-size:11px}.apollo-topbar .brand{color:#fff;text-decoration:none;font-weight:900}.archive-label,.eyebrow{color:#83dcff;letter-spacing:.13em;font-size:10px}.language-switch{margin-left:auto;display:flex;gap:4px}.lang{border:1px solid #44657d;background:#0c1725;color:#a9bacb;padding:5px 8px;cursor:pointer}.lang.active{background:#83dcff;color:#07111c}.apollo-hero{display:grid;gap:30px;align-items:center;padding:80px 0 70px}.apollo-hero h1{max-width:760px;margin:12px 0 18px;font-size:clamp(3rem,7vw,6.4rem);line-height:.9}.lead{max-width:650px;color:#b8c8d8;font-size:1.25rem;line-height:1.6}.fact-note{max-width:630px;border-left:3px solid #ffb65a;padding:10px 14px;color:#9db0c3;line-height:1.5}.fact-note b{color:#ffb65a;font-size:11px}.apollo-actions .button{display:inline-block;text-decoration:none;padding:10px 14px;border:1px solid #44657d;font-family:"Courier New",monospace;font-size:11px;font-weight:700}.button.primary{background:#83dcff;color:#07111c;border-color:#83dcff}.button.secondary{color:#cfe8ff;background:#0c1725}
+</style>

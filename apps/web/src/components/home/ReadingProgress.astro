@@ -1,0 +1,42 @@
+<div class="reading-track" data-reading-track data-flying="false" aria-hidden="true">
+  <div class="reading-course">
+    <span class="reading-rail"></span>
+    <span class="reading-fill" id="readingProgress"></span>
+    <span class="reading-endpoint launch-point"></span>
+    <span class="reading-endpoint arrival-point"></span>
+    <span class="reading-rocket" data-reading-rocket hidden>
+      <span class="rocket-exhaust"></span>
+      <span class="rocket-window"><img src="/assets/rocket-mission.png" alt="" width="256" height="256" decoding="async" /></span>
+    </span>
+  </div>
+</div>
+
+<style>
+  .reading-track { --reading-progress: 0%; --rocket-width: 60px; position: relative; height: 18px; pointer-events: none; }
+  .reading-course { position: absolute; inset: 0 calc(var(--rocket-width) / 2 + 24px); }
+  .reading-rail, .reading-fill { position: absolute; top: calc(50% - 1px); left: 0; height: 2px; }
+  .reading-rail { right: 0; background: #243d51; }
+  .reading-fill { width: var(--reading-progress); background: linear-gradient(90deg, #58d9ff, #ffad65); box-shadow: 0 0 6px #58d9ff22; }
+  .reading-endpoint { position: absolute; top: calc(50% - 2px); width: 4px; height: 4px; background: #63869e; }
+  .launch-point { left: -2px; }
+  .arrival-point { right: -2px; }
+  .reading-rocket { position: absolute; top: 50%; left: var(--reading-progress); width: var(--rocket-width); height: 24px; transform: translate(-50%, -50%); }
+  .reading-rocket[hidden] { display: none; }
+  /* Crop the PNG's transparent square padding; preserve the complete rocket art. */
+  .rocket-window { position: absolute; inset: 0; display: block; overflow: hidden; }
+  .rocket-window img { position: absolute; top: 50%; left: 50%; width: 60px; height: 60px; max-width: none; transform: translate(-50%, -50%); image-rendering: pixelated; }
+  .rocket-exhaust { position: absolute; right: 82%; top: calc(50% - 2px); width: 26px; height: 4px; background: linear-gradient(90deg, transparent, #ff9a3c99 58%, #ffdf9c); opacity: 0; transform: scaleX(.3); transform-origin: right center; }
+  [data-flying="true"] .rocket-exhaust { opacity: .9; transform: scaleX(1); }
+  [data-flying="true"] .rocket-window img { animation: rocket-thrust .16s steps(2, end) infinite alternate; }
+  @keyframes rocket-thrust { from { transform: translate(-50%, calc(-50% - .5px)); } to { transform: translate(-50%, calc(-50% + .5px)); } }
+  @media (max-width: 600px) {
+    .reading-track { --rocket-width: 48px; height: 14px; }
+    .reading-rocket { height: 20px; }
+    .rocket-window img { width: 48px; height: 48px; }
+    .rocket-exhaust { width: 20px; height: 3px; top: calc(50% - 1.5px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-flying="true"] .rocket-window img { animation: none; }
+    .rocket-exhaust { display: none; }
+  }
+</style>

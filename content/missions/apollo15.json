@@ -1,0 +1,93 @@
+{
+  "id": "apollo15",
+  "title": "NASA: LOST MISSIONS",
+  "mission_name": "APOLLO 15",
+  "subtitle": "The first car on another world",
+  "location": "Hadley-Apennine · Moon",
+  "story_arc": {
+    "opening": "Apollo 15 was designed for longer lunar stays, longer drives and more science than earlier Apollo missions.",
+    "turn": "The Lunar Roving Vehicle carried astronauts across Hadley-Apennine, helping them reach rocks and terrain far beyond the landing site.",
+    "ending": "The crew returned to lunar orbit, but the rover and the surface experiments stayed behind as a working record of exploration.",
+    "emotional_line": "The rover did not come home. Its tracks and instruments became part of the Moon's permanent human-made landscape."
+  },
+  "sources": {
+    "nasa_apollo15": {
+      "label": "NASA · Apollo 15 Mission Details",
+      "url": "https://www.nasa.gov/missions/apollo/apollo-15-mission-details/"
+    },
+    "nasa_lrv": {
+      "label": "NASA NSSDC · Lunar Roving Vehicle",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_lrv.html"
+    },
+    "nssdc_apollo15_alsep": {
+      "label": "NASA NSSDC · Apollo 15 Lunar Module / ALSEP",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-063C"
+    },
+    "nssdc_apollo15_lrrr": {
+      "label": "NASA NSSDC · Apollo 15 Laser Ranging Retroreflector (LRRR)",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=1971-063C-08"
+    }
+  },
+  "hardware": [
+    {
+      "id": "lrv",
+      "name": "Lunar Roving Vehicle (LRV)",
+      "type": "Battery-powered lunar rover",
+      "what_it_was": "A lightweight electric vehicle designed for the Moon's low gravity and airless surface.",
+      "why_sent": "To extend the astronauts' range and let them investigate more of the Hadley-Apennine region.",
+      "instrument": "Navigation system, communications equipment and a television camera used during the traverses.",
+      "discovery": "The rover helped the crew reach and document Hadley Rille, the Apennine mountain front and many sample stations.",
+      "why_left": "The crew needed to leave the lunar surface in the Lunar Module; the rover was not designed to return to Earth.",
+      "what_remains": "Apollo 15's LRV remains parked near the Falcon lunar module landing site on the Moon.",
+      "current_status": {
+        "location": "Hadley-Apennine, Moon (near the Falcon landing site)",
+        "status": "Inactive and inert; left behind by design",
+        "last_event": "Used during Apollo 15 surface traverses in July–August 1971; not powered after the crew departed.",
+        "still_in_use": "No",
+        "source_id": "nasa_lrv"
+      }
+    },
+    {
+      "id": "alsep",
+      "name": "Apollo Lunar Surface Experiments Package (ALSEP)",
+      "type": "Surface science station",
+      "what_it_was": "A group of experiments deployed on the lunar surface after landing.",
+      "why_sent": "To keep collecting scientific measurements after the astronauts left the Moon.",
+      "instrument": "Seismic, heat-flow, magnetic-field and other lunar-environment experiments.",
+      "discovery": "ALSEP data helped scientists study the Moon's interior, surface environment and response to impacts.",
+      "why_left": "It was built to operate on the Moon after the crew's short surface visit.",
+      "what_remains": "The Apollo 15 experiment package remains at its deployment site near Hadley-Apennine.",
+      "current_status": {
+        "location": "Hadley-Apennine, Moon (Apollo 15 ALSEP site)",
+        "status": "Inactive; stations commanded off",
+        "last_event": "The Apollo 15 ALSEP was shut down along with the other ALSEP stations on September 30, 1977.",
+        "still_in_use": "No",
+        "source_id": "nssdc_apollo15_alsep"
+      }
+    },
+    {
+      "id": "lrrr",
+      "name": "Laser Ranging Retroreflector (LRRR)",
+      "type": "Passive laser retroreflector",
+      "what_it_was": "A corner-reflector array deployed as part of Apollo 15's surface experiments.",
+      "why_sent": "To reflect laser beams from Earth for precise measurements of Earth–Moon distance and lunar motion.",
+      "instrument": "300 fused-silica corner reflectors in a passive array.",
+      "discovery": "Lunar laser ranging with Apollo retroreflectors has supported long-term measurements of the Moon's orbit and related geophysical studies.",
+      "why_left": "It is a passive instrument designed to remain on the Moon with no power or crew support.",
+      "what_remains": "The retroreflector array remains at the Apollo 15 site on the Moon.",
+      "current_status": {
+        "location": "Hadley-Apennine, Moon (Apollo 15 site)",
+        "status": "Passive instrument on the lunar surface",
+        "last_event": "Deployed during Apollo 15; no powered operations to end. Used in ongoing laser-ranging observations from Earth.",
+        "still_in_use": "Yes (passive laser ranging target)",
+        "source_id": "nssdc_apollo15_lrrr"
+      }
+    }
+  ],
+  "ending": {
+    "title": "You found what Apollo 15 left behind.",
+    "codex": "Moon Codex: Apollo 15 ✓",
+    "tagline": "The journey ended. The evidence stayed.",
+    "codex_text": "Apollo 15 left the first Lunar Roving Vehicle and a surface experiment package at Hadley-Apennine. Together they expanded how far humans could explore and how long science could continue after departure."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "lost-missions-challenge-pitch",
+  "title": "NASA: Lost Missions",
+  "subtitle": "The journey ended. The evidence stayed.",
+  "tagline": "A family-friendly interactive archive about the NASA hardware left behind on Mars and the Moon.",
+  "event": "NASA Space Apps Challenge 2026",
+  "challenge": {
+    "name": "Abandoned but not Forgotten",
+    "full_name": "Abandoned but not Forgotten: Storytelling about NASA's Discarded Equipment on the Moon and Mars",
+    "description": "Introduce families and school-age space enthusiasts to the hardware NASA left behind and the science it made possible."
+  },
+  "hero_actions": [
+    { "label": "Enter the Story", "href": "/missions", "style": "primary" },
+    { "label": "Explore the Challenge", "href": "#challenge", "style": "secondary" }
+  ],
+  "idea": {
+    "eyebrow": "Challenge Response",
+    "title": "Every silent machine still has a scientific story.",
+    "body": "Lost Missions turns real NASA mission records into short interactive investigations. Players meet Spirit, Opportunity and Apollo 15's Lunar Roving Vehicle, identify the hardware, connect instruments to discoveries, and learn why each artifact stayed behind. Fictional framing and archive simulations are clearly separated from NASA data."
+  },
+  "player_promise": [
+    {
+      "title": "Discover",
+      "body": "A real mission site introduces a machine that completed its work and stayed behind."
+    },
+    {
+      "title": "Investigate",
+      "body": "The player connects instruments, engineering problems and discoveries while separating NASA data from simulations."
+    },
+    {
+      "title": "Remember",
+      "body": "The final hardware card explains what the machine was, what it discovered, and what remains today."
+    }
+  ],
+  "mvp_scene": {
+    "eyebrow": "First Playable Story",
+    "title": "Three missions, three kinds of goodbye",
+    "body": "The MVP follows Spirit and Opportunity on Mars, then visits Apollo 15's abandoned Lunar Roving Vehicle and ALSEP on the Moon. Each mission combines a short playable investigation with a sourced hardware codex."
+  },
+  "demo_beats": [
+    "Arrive at a real NASA mission site.",
+    "Identify the hardware and the instruments it carried.",
+    "Connect a scientific clue to a discovery.",
+    "Play a clearly labeled simulation of an engineering problem.",
+    "Unlock a sourced hardware codex and the mission's emotional ending."
+  ],
+  "content_rules": [
+    {
+      "id": "rule-real-data",
+      "label": "NASA Data",
+      "description": "Verified mission facts must include a source link and be clearly attributed to NASA or the cited mission archive."
+    },
+    {
+      "id": "rule-game-events",
+      "label": "Game Event",
+      "description": "Fictional framing and archive simulations cannot change the historical mission outcome."
+    }
+  ]
+}
