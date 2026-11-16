@@ -90,8 +90,6 @@ Run the application locally and visit:
 | i18n and review          | EN/ES, accuracy and UX fixes                        | Bilingual content, corrected sources/dates |
 | Polish and documentation | Validation/build, documentation                     | Green checks, README                       |
 
-*Examples:* sourced NASA data/images, date/state verification, progress screenshots.
-
 ---
 
 ## 5. Impact and Benefits
