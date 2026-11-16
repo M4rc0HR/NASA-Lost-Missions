@@ -131,11 +131,11 @@ Run the application locally and visit:
 - Separating verified data from simulations and keeping per-fact sources improves trust and review.
 
 ### 6.3. Future Improvements
-
 - Complete the Apollo 15 mission.
+- Add more missions based on past NASA events.
+- Add more minigames, characters, and interactive elements.
 - Localize and optimize key images.
 - Add comparison and educational layers.
-- Improve accessibility and SEO.
 - Configure CI and automated tests.
 
 ---
