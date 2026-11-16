@@ -40,8 +40,7 @@ The challenge calls for stories about discarded/left-behind NASA equipment. This
 
 ### 2.1. Demo Video
 
-- **Demo video (YouTube / 30s):** *To be added*.
-
+- **Demo video (YouTube / 30s):** [NASA: Lost Missions - DEMO](https://www.youtube.com/watch?v=NAVtFgFLFio)
 ### 2.2. Quick Preview
 
 Run the application locally and visit:
