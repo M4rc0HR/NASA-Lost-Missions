@@ -53,8 +53,8 @@ Run the application locally and visit:
 ---
 
 ## 3. Project Links
-- **Repository:** [NASA: Lost Missions](https://github.com/M4rc0HR/NASA-Lost-Missions).
-- **Live site:** [NASA: Lost Missions](https://nasa-lost-missions.vercel.app/).
+- **Repository:** [NASA: Lost Missions - REPO](https://github.com/M4rc0HR/NASA-Lost-Missions)
+- **Live site:** [NASA: Lost Missions - WEB](https://nasa-lost-missions.vercel.app/)
 
 ---
 
